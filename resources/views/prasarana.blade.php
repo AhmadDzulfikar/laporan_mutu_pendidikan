@@ -24,7 +24,7 @@
 
                     <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
-                        Add +
+                        Add+
                     </button>
 
                     <!-- Modal ADD DATA -->
