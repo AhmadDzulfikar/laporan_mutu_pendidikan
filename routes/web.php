@@ -51,6 +51,8 @@ Route::get('/prasarana', [PrasaranaController::class, 'index']);
 // Route::get('/create-prasarana', [PrasaranaController::class, 'create']);
 Route::post('/store-prasarana', [PrasaranaController::class, 'store']);
 Route::post('show-prasarana/{id}', [PrasaranaController::class, 'show']);
+Route::put('/prasarana/edit/{id}', [PrasaranaController::class, 'update']);
+Route::delete('/prasarana/delete/{id}', [PrasaranaController::class, 'destroy']);
 
 //USER
 Route::get('/admin', [AdminController::class, 'index']);

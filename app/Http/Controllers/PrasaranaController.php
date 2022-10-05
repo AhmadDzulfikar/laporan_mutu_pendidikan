@@ -62,10 +62,10 @@ class PrasaranaController extends Controller
      */
     public function show($id)
     {
-        $data = Prasarana::findOrFail($id);
-        return view('prasarana')->with([
-            'data'=> $data
-        ]);
+        // $data = Prasarana::findOrFail($id);
+        // return view('prasarana')->with([
+        //     'data'=> $data
+        // ]);
     }
 
     /**
@@ -86,9 +86,25 @@ class PrasaranaController extends Controller
      * @param  \App\Models\Prasarana  $prasarana
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prasarana $prasarana)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Prasarana::where('id', $id)->firstOrFail();
+
+        // dd($request->all());
+        $this->validate($request , [
+            'uraian'=>'required',
+            'jumlah'=>'required',
+            'tanggal'=>'required',
+            'kondisi'=>'required'
+        ]);
+
+        $data->uraian = $request->uraian;
+        $data->jumlah = $request->jumlah;
+        $data->tanggal = $request->tanggal;
+        $data->kondisi = $request->kondisi;
+        $data->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -97,8 +113,11 @@ class PrasaranaController extends Controller
      * @param  \App\Models\Prasarana  $prasarana
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prasarana $prasarana)
+    public function destroy($id)
     {
-        //
+        $data = Prasarana::find($id);
+        $data->delete();
+        
+        return redirect()->back();
     }
 }
