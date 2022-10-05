@@ -40,6 +40,9 @@ Route::get('/evaluasiguru', [EvaluasiGuruController::class, 'index']);
 //Keuangan
 //Keluar
 Route::get('/keluar', [KeluarController::class, 'index']);
+Route::post('/store-keluar', [KeluarController::class, 'store']);
+Route::put('/keluar/edit/{id}', [KeluarController::class, 'update']);
+Route::delete('/keluar/delete/{id}', [KeluarController::class, 'destroy']);
 
 
 //Masuk

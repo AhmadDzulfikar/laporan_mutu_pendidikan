@@ -4,8 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Keluar extends Model
 {
-    use HasFactory;
+    use SoftDeletes;
+
+    protected $table = 'keluars';
+
+    protected $fillable = [
+        'uraian',
+        'keluar'
+    ];
+
+    protected $hidden;
 }

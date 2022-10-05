@@ -14,7 +14,10 @@ class CreateKeluarsTable extends Migration
     public function up()
     {
         Schema::create('keluars', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->longText('uraian');
+            $table->integer('keluar')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

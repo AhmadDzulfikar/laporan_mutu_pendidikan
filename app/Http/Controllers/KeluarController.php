@@ -14,7 +14,10 @@ class KeluarController extends Controller
      */
     public function index()
     {
-        return view('keuangan.keluar');
+        $data = Keluar::all();
+        return view('keuangan.keluar')->with([
+            'data'=> $data
+        ]);
     }
 
     /**
@@ -35,7 +38,13 @@ class KeluarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Keluar();
+        $data->uraian = $request->uraian;
+        $data->keluar = $request->keluar;
+
+        $data->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -67,9 +76,21 @@ class KeluarController extends Controller
      * @param  \App\Models\Keluar  $keluar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Keluar $keluar)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Keluar::where('id', $id)->firstOrFail();
+
+        // dd($request->all());
+        $this->validate($request , [
+            'uraian'=>'required',
+            'keluar'=>'required',
+        ]);
+
+        $data->uraian = $request->uraian;
+        $data->keluar = $request->jumlah;
+        $data->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +99,11 @@ class KeluarController extends Controller
      * @param  \App\Models\Keluar  $keluar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Keluar $keluar)
+    public function destroy($id)
     {
-        //
+        $data = Keluar::find($id);
+        $data->delete();
+        
+        return redirect()->back();
     }
 }
