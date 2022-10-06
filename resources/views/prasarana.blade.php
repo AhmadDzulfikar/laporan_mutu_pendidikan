@@ -200,7 +200,8 @@
                                 <td>{{ $dp->created_at }}</td>
                                 <td>{{ $dp->uraian }}</td>
                                 <td>{{ $dp->jumlah }}</td>
-                                <td>{{ $dp->tanggal }}</td>
+                                <td>{{ date('d-m-Y h:i', strtotime($dp->tanggal)) }}</td>
+                                {{-- <td>{{ date('d H:i',strtotime($dp->tanggal)) }}</td> --}}
                                 <td>{{ $dp->kondisi }}</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"

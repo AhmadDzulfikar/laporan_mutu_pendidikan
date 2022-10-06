@@ -40,6 +40,7 @@ class KeluarController extends Controller
     {
         $data = new Keluar();
         $data->uraian = $request->uraian;
+        $data->tanggal = $request->tanggal;
         $data->keluar = $request->keluar;
 
         $data->save();
@@ -83,11 +84,13 @@ class KeluarController extends Controller
         // dd($request->all());
         $this->validate($request , [
             'uraian'=>'required',
+            'tanggal'=>'required',
             'keluar'=>'required',
         ]);
 
         $data->uraian = $request->uraian;
-        $data->keluar = $request->jumlah;
+        $data->tanggal = $request->tanggal;
+        $data->keluar = $request->keluar;
         $data->update();
 
         return redirect()->back();

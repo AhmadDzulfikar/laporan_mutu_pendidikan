@@ -53,7 +53,13 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Keluar</label>
+                                            <label for="formGroupExampleInput2" class="form-label">Tanggal Pembelian</label>
+                                            <input type="date" class="form-control" id="formGroupExampleInput2"
+                                                placeholder="tanggal" name="tanggal">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label">Pengeluaran</label>
                                             <input type="number" name="keluar" class="form-control"
                                                 id="formGroupExampleInput" placeholder="Masukkan Jumlah">
                                         </div>
@@ -90,6 +96,13 @@
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Example input placeholder" name="uraian"
                                                     value="{{ $d->uraian }}">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="formGroupExampleInput2" class="form-label">Tanggal
+                                                    Pembelian</label>
+                                                <input type="date" class="form-control" id="formGroupExampleInput2"
+                                                    placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
                                             </div>
 
                                             <div class="mb-3">
@@ -147,6 +160,7 @@
                                 <th>No</th>
                                 <th>Tanggal</th>
                                 <th>Uraian</th>
+                                <th>Tanggal Pengeluaran</th>
                                 <th>Pengeluaran</th>
                                 <th>Status</th>
                             </tr>
@@ -156,6 +170,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $p->created_at }}</td>
                                 <td>{{ $p->uraian }}</td>
+                                <td>{{ $p->tanggal }}</td>
                                 <td>{{ $p->keluar }}</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"

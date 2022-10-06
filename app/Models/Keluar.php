@@ -14,6 +14,7 @@ class Keluar extends Model
 
     protected $fillable = [
         'uraian',
+        'tanggal',
         'keluar'
     ];
 
