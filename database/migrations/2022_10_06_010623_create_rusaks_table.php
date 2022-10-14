@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateRusaksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('rusaks', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('baik_id');
+            $table->integer('jumlah_r');
+            $table->date('tanggal');
+            $table->foreign('baik_id')->references('id')->on('baiks');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('rusaks');
+    }
+}

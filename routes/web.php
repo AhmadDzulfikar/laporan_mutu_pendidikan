@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BaikController;
 use App\Http\Controllers\EvaluasiGuruController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KeluarController;
 use App\Http\Controllers\KesiapanGuruController;
 use App\Http\Controllers\MasukController;
 use App\Http\Controllers\PrasaranaController;
+use App\Http\Controllers\RusakController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -65,3 +67,14 @@ Route::get('/guru', [GuruController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Prasarana
+//Baik
+Route::get('/baik', [BaikController::class, 'index']);
+Route::post('/store-baik', [BaikController::class, 'store']);
+Route::put('/baik/edit/{id}', [BaikController::class, 'update']);
+Route::delete('/baik/delete/{id}', [BaikController::class, 'destroy']);
+
+//Rusak
+Route::get('/rusak', [RusakController::class, 'index']);
+Route::post('/store-rusak', [RusakController::class, 'store']);

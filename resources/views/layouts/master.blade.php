@@ -90,8 +90,7 @@
                                 {{-- <li class="submenu-item {{ request()->is('in*') ? 'active' : '' }}">
                                     <a href={{ url('in') }}>Kehadiran</a>
                                 </li> --}}
-                                <li
-                                    class="submenu-item {{ request()->is('kesiapanguru*') ? 'active' : '' }}">
+                                <li class="submenu-item {{ request()->is('kesiapanguru*') ? 'active' : '' }}">
                                     <a href={{ url('/kesiapanguru') }}>Kesiapan</a>
                                 </li>
                                 {{-- <li
@@ -102,8 +101,7 @@
                                     class="submenu-item {{ request()->is('/out*') ? 'active' : '' }}">
                                     <a href={{ url('/out') }}>Ide</a>
                                 </li> --}}
-                                <li
-                                    class="submenu-item {{ request()->is('evaluasiguru*') ? 'active' : '' }}">
+                                <li class="submenu-item {{ request()->is('evaluasiguru*') ? 'active' : '' }}">
                                     <a href={{ url('/evaluasiguru') }}>Evaluasi</a>
                                 </li>
                             </ul>
@@ -115,13 +113,11 @@
                                 <span>Keuangan</span>
                             </a>
                             <ul class="submenu ">
-                                <li
-                                    class="submenu-item {{ request()->is('masuk*') ? 'active' : '' }}">
+                                <li class="submenu-item {{ request()->is('masuk*') ? 'active' : '' }}">
                                     <a href={{ url('/masuk') }}>Masuk</a>
                                 </li>
-                        
-                                <li
-                                    class="submenu-item {{ request()->is('keluar*') ? 'active' : '' }}">
+
+                                <li class="submenu-item {{ request()->is('keluar*') ? 'active' : '' }}">
                                     <a href={{ url('/keluar') }}>Keluar</a>
                                 </li>
                             </ul>
@@ -141,8 +137,28 @@
                             </a>
                         </li>
 
+                        {{-- <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-tools"></i>
+                                <span>Sarana Prasarana</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item {{ request()->is('baik*') ? 'active' : '' }}">
+                                    <a href={{ url('/baik') }}>Baik</a>
+                                </li>
+
+                                <li class="submenu-item {{ request()->is('rusak*') ? 'active' : '' }}">
+                                    <a href={{ url('/rusak') }}>Rusak</a>
+                                </li>
+
+                                <li class="submenu-item {{ request()->is('keluar*') ? 'active' : '' }}">
+                                    <a href={{ url('/keluar') }}>Rekap Prasarana</a>
+                                </li>
+                            </ul>
+                        </li> --}}
+
                         <hr class="divider">
-        
+
                         {{-- <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-clipboard-check-fill"></i>                                
@@ -159,34 +175,34 @@
                         </li> --}}
 
                         <li class="sidebar-title">Settings</li>
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-people-fill"></i>
-                                    <span>User</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li class="submenu-item {{ request()->is('admin*') ? 'active' : '' }}">
-                                        <a href={{ url('/admin') }}>Admin</a>
-                                    </li>
-                                    <li class="submenu-item {{ request()->is('guru*') ? 'active' : '' }}">
-                                        <a href={{ url('/guru') }}>Guru</a>
-                                    </li>
-                                </ul>
-                            </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>User</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item {{ request()->is('admin*') ? 'active' : '' }}">
+                                    <a href={{ url('/admin') }}>Admin</a>
+                                </li>
+                                <li class="submenu-item {{ request()->is('guru*') ? 'active' : '' }}">
+                                    <a href={{ url('/guru') }}>Guru</a>
+                                </li>
+                            </ul>
+                        </li>
 
-                            <li class="sidebar-item  ">
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"
-                                    class="sidebar-link">
-                                    <i class="bi bi-arrow-left-square-fill"></i>
-                                    <span>Logout</span>
-                                </a>
-    
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
+                                class="sidebar-link">
+                                <i class="bi bi-arrow-left-square-fill"></i>
+                                <span>Logout</span>
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                 </div>
             </div>
         </div>
