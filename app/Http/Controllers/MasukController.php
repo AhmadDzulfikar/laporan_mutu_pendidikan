@@ -14,7 +14,8 @@ class MasukController extends Controller
      */
     public function index()
     {
-        return view('keuangan.masuk');
+        $masuk = Masuk::get();
+        return view('keuangan.masuk',compact('masuk'));
     }
 
     /**

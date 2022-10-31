@@ -60,8 +60,9 @@
 
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Pengeluaran</label>
-                                            <input type="number" name="keluar" class="form-control"
-                                                id="formGroupExampleInput" placeholder="Masukkan Jumlah">
+                                            <input type="text" name="keluar" class="form-control"
+                                                id="formGroupExampleInput" placeholder="Masukkan Jumlah"
+                                                onkeyup="formatbaru(event)">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -171,7 +172,7 @@
                                 <td>{{ $p->created_at }}</td>
                                 <td>{{ $p->uraian }}</td>
                                 <td>{{ $p->tanggal }}</td>
-                                <td>{{ $p->keluar }}</td>
+                                <td>Rp. @money((float)$p->keluar) </td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
@@ -185,4 +186,31 @@
             </div>
 
         </section>
+
+        <script type="text/javascript">
+            function formatbaru(e) {
+                let hasil = formatedit(e.target.value);
+
+                e.target.value = hasil;
+            }
+
+            /* Fungsi formateditom */
+            function formatedit(angka) {
+                var prefix = "Rp";
+                var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                    split = number_string.split(','),
+                    sisa = split[0].length % 3,
+                    edit = split[0].substr(0, sisa),
+                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    edit += separator + ribuan.join('.');
+                }
+
+                edit = split[1] != undefined ? edit + ',' + split[1] : edit;
+                return prefix == undefined ? edit : (edit ? 'Rp ' + edit : '');
+            }
+        </script>
     @endsection

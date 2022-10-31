@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PesertaDidik;
 use Illuminate\Http\Request;
 
 class PesertaDidikController extends Controller
@@ -13,7 +14,10 @@ class PesertaDidikController extends Controller
      */
     public function index()
     {
-        return view('data.pesertadidik');
+        $data = PesertaDidik::all();
+        return view('data.pesertadidik')->with([
+            'data'=> $data
+        ]);
     }
 
     /**
@@ -34,7 +38,19 @@ class PesertaDidikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new PesertaDidik();
+        $data->siswa = $request->siswa;
+        $data->nisn = $request->nisn;
+        $data->tempat = $request->tempat;
+        $data->tgl_lahir = $request->tgl_lahir;
+        $data->no_tlp = $request->no_tlp;
+        $data->org_tua = $request->org_tua;
+        $data->tgl_msk = $request->tgl_msk;
+        $data->tgl_lulus = $request->tgl_lulus;
+        //  
+        $data->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -68,7 +84,30 @@ class PesertaDidikController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = PesertaDidik::where('id', $id)->firstOrFail();
+
+        $this->validate($request, [
+            'siswa'=>'required',
+            'nisn'=>'required',
+            'tempat'=>'required',
+            'tgl_lahir'=>'required',
+            'no_tlp'=>'required',
+            'org_tua'=>'required',
+            'tgl_msk'=>'required',
+            'tgl_lulus'=>'required'
+        ]);
+
+        $data->siswa = $request->siswa;
+        $data->nisn = $request->nisn;
+        $data->tempat = $request->tempat;
+        $data->tgl_lahir = $request->tgl_lahir;
+        $data->no_tlp = $request->no_tlp;
+        $data->org_tua = $request->org_tua;
+        $data->tgl_msk = $request->tgl_msk;
+        $data->tgl_lulus = $request->tgl_lulus;
+        $data->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -79,6 +118,9 @@ class PesertaDidikController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = PesertaDidik::find($id);
+        $data->delete();
+
+        return redirect()->back();
     }
 }

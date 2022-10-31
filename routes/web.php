@@ -6,6 +6,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KeluarController;
 use App\Http\Controllers\KesiapanGuruController;
 use App\Http\Controllers\MasukController;
+use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\PrasaranaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,9 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 //Data
 //PesertaDidik
 Route::get('/pesertadidik', [App\Http\Controllers\PesertaDidikController::class, 'index']);
+Route::post('/store-siswa', [PesertaDidikController::class, 'store']);
+Route::put('/siswa/edit/{id}', [PesertaDidikController::class, 'update']);
+Route::delete('siswa/delete/{id}', [PesertaDidikController::class, 'destroy']);
 
 //Pendidik
 Route::get('/kesiapanguru', [KesiapanGuruController::class, 'index']);

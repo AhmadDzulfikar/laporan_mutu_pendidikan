@@ -194,21 +194,21 @@
                             <th>Penghargaan</th> --}}
                             </tr>
                         </thead>
-                        @foreach ($data as $dp)
+                        @foreach ($data as $pd)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $dp->created_at }}</td>
-                                <td>{{ $dp->uraian }}</td>
-                                <td>{{ $dp->jumlah }}</td>
-                                <td>{{ date('d-m-Y h:i', strtotime($dp->tanggal)) }}</td>
-                                {{-- <td>{{ date('d H:i',strtotime($dp->tanggal)) }}</td> --}}
-                                <td>{{ $dp->kondisi }}</td>
+                                <td>{{ $pd->created_at }}</td>
+                                <td>{{ $pd->uraian }}</td>
+                                <td>{{ $pd->jumlah }}</td>
+                                <td>{{ date('d-m-Y h:i', strtotime($pd->tanggal)) }}</td>
+                                {{-- <td>{{ date('d H:i',strtotime($pd->tanggal)) }}</td> --}}
+                                <td>{{ $pd->kondisi }}</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#edit-prasarana{{ $dp->id }}">Edit</i></a>
+                                        data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
 
                                     <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#delete-prasarana{{ $dp->id }}">delete</i></a>
+                                        data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
                                 </td>
                         @endforeach
                     </table>

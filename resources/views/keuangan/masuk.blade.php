@@ -46,53 +46,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($masuk as $item)
                         <tr>
-                            <td>1</td>
-                            <td>2022-09-09 00:00:00</td>
-                            <td>Sandi</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
+                            <td>{{ $item->siswa->siswa }}</td>
+                            <td>{{ $item->siswa->siswa }}</td>
+                            <td>{{ $item->siswa->siswa }}</td>
+                            <td>{{ $item->siswa->siswa }}</td>
+                            <td>{{ $item->siswa->siswa }}</td>
+                            <td>{{ $item->siswa->siswa }}</td>
+                            <td>{{ $item->siswa->siswa }}</td>
                             <td>
                                 <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="">Edit</i></a>
+                                data-bs-target="">Edit</i></a>
                                 <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="">delete</i></a>
+                                data-bs-target="">delete</i></a>
                             </td>
                         </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>2022-09-09 00:00:00</td>
-                            <td>Sandi</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>
-                                <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="">Edit</i></a>
-                                <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="">delete</i></a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>2022-09-09 00:00:00</td>
-                            <td>Sandi</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>Rp. 700.000</td>
-                            <td>
-                                <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="">Edit</i></a>
-                                <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="">delete</i></a>
-                            </td>
-                        </tr>
+                        @endforeach
+                        
+                        
 
                         
                 {{-- TUTUP PERIODE --}}

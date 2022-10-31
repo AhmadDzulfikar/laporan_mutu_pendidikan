@@ -88,6 +88,7 @@ class KeluarController extends Controller
             'keluar'=>'required',
         ]);
 
+        
         $data->uraian = $request->uraian;
         $data->tanggal = $request->tanggal;
         $data->keluar = $request->keluar;
