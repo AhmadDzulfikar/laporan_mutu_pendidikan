@@ -16,6 +16,11 @@ class CreateMasuksTable extends Migration
         Schema::create('masuks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pesertadidik_id')->constrained('pesertadidik');
+            $table->date('tanggal');
+            $table->integer('uangpangkal');
+            $table->integer('spp');
+            $table->integer('uangkegiatan');
+            $table->integer('uangperlengkapan');
             $table->timestamps();
         });
     }

@@ -10,10 +10,15 @@ class Masuk extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pesertadidik_id'
+        'pesertadidik_id',
+        'tanggal',
+        'uangpangkal',
+        'spp',
+        'uangkegiatan',
+        'uangperlengkapan'
     ];
     public function siswa()
     {
-        return $this->belongsTo(PesertaDidik::class,'id');
+        return $this->belongsTo(PesertaDidik::class,'pesertadidik_id','id');
     }
 }

@@ -39,9 +39,10 @@ class KeluarController extends Controller
     public function store(Request $request)
     {
         $data = new Keluar();
+        $result = preg_replace("/[^0-9]/", "", $request->keluar);
         $data->uraian = $request->uraian;
         $data->tanggal = $request->tanggal;
-        $data->keluar = $request->keluar;
+        $data->keluar = $result;
 
         $data->save();
 
@@ -88,10 +89,10 @@ class KeluarController extends Controller
             'keluar'=>'required',
         ]);
 
-        
+        $result = preg_replace("/[^0-9]/", "", $request->keluar);
         $data->uraian = $request->uraian;
         $data->tanggal = $request->tanggal;
-        $data->keluar = $request->keluar;
+        $data->keluar = $result;
         $data->update();
 
         return redirect()->back();

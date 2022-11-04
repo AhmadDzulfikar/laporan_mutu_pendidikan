@@ -101,7 +101,8 @@
                             <td>Universitas Pertanian Bandung</td>
                             <td>Universitas Indnesia</td>            
                             <td>Universitas Diponegoro</td>
-                            <td></td>
+                            <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="">Detail</i></a></td>
                             <td>
                                 <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                     data-bs-target="">Edit</i></a>

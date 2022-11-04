@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\PesertaDidik;
+use App\Models\Keluar;
 use App\Models\Masuk;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class MasukController extends Controller
     public function index()
     {
         $masuk = Masuk::get();
-        return view('keuangan.masuk',compact('masuk'));
+        $siswa = PesertaDidik::all();
+        return view('keuangan.masuk',compact('masuk','siswa'));
     }
 
     /**
@@ -36,7 +38,19 @@ class MasukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Masuk();
+        $result = preg_replace("/[^0-9]/", "", $request->masuk);
+        $data->pesertadidik_id = $request->pesertadidik_id;
+        $data->tanggal = $request->tanggal;
+        $data->uangpangkal = preg_replace("/[^0-9]/", "", $request->uangpangkal);
+        $data->spp = preg_replace("/[^0-9]/", "", $request->spp);
+        $data->uangkegiatan = preg_replace("/[^0-9]/", "", $request->uangkegiatan);
+        $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
+        // dd($data->uangperlengkapan);
+        $data->save();
+
+        return redirect()->back();
+
     }
 
     /**
@@ -79,8 +93,11 @@ class MasukController extends Controller
      * @param  \App\Models\Masuk  $masuk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Masuk $masuk)
+    public function destroy($id)
     {
-        //
+        $data = Keluar::find($id);
+        $data->delete();
+
+        return redirect()->back();
     }
 }

@@ -46,6 +46,7 @@ class UserSeeder extends Seeder
 
         $masuk = Masuk::create([
             'pesertadidik_id' => $pd->id
+            
         ]);
 
         // $manager->assignRole('manager');

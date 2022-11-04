@@ -20,7 +20,7 @@ class PesertaDidik extends Model
         'tgl_lulus'
     ];
 
-    public function masuk() {
-        return $this->belongsTo(Masuk::class);
+    public function masuks() {
+        return $this->hasMany(Masuk::class);
     }
 }

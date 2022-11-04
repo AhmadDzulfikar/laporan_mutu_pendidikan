@@ -14,7 +14,13 @@ class CreateEvaluasiGurusTable extends Migration
     public function up()
     {
         Schema::create('evaluasi_gurus', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->longText('nama');
+            $table->date('tanggal');
+            $table->text('s1');
+            $table->text('s2');
+            $table->text('s3');
+            $table->longText('penghargaan');
             $table->timestamps();
         });
     }
