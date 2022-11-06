@@ -8,6 +8,7 @@ use App\Http\Controllers\KesiapanGuruController;
 use App\Http\Controllers\MasukController;
 use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\PrasaranaController;
+use App\Models\Masuk;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -55,7 +56,8 @@ Route::delete('/keluar/delete/{id}', [KeluarController::class, 'destroy']);
 //Masuk
 Route::get('/masuk', [MasukController::class, 'index']);
 Route::post('/store-masuk', [MasukController::class, 'store']);
-Route::put('/masuk/edit/');
+Route::put('/masuk/edit/{id}', [MasukController::class, 'update']);
+Route::delete('/masuk/delete/{id}', [MasukController::class, 'destroy']);
 //------------------------------Keuangan----------------------------------------
 
 //------------------------------prasarana----------------------------------------

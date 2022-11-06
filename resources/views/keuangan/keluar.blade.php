@@ -108,9 +108,10 @@
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">Pengeluaran</label>
-                                                <input type="number" min="1" name="keluar" class="form-control"
+                                                <input type="text" min="1" name="keluar" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan Jumlah"
-                                                    autocomplete="off" value="{{ $d->keluar }}">
+                                                    onkeyup="formatbaru(event)" autocomplete="off"
+                                                    value="{{ $d->keluar }}">
                                             </div>
 
                                         </div>
@@ -172,7 +173,7 @@
                                 <td>{{ $p->created_at }}</td>
                                 <td>{{ $p->uraian }}</td>
                                 <td>{{ $p->tanggal }}</td>
-                                <td>Rp. @money((float)$p->keluar) </td>
+                                <td>Rp. @money((float) $p->keluar) </td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>

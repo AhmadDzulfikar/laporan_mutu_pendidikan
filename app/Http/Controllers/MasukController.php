@@ -82,9 +82,31 @@ class MasukController extends Controller
      * @param  \App\Models\Masuk  $masuk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Masuk $masuk)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Masuk::where('id', $id)->firstOrFail();
+
+        // dd($request->all());
+        $this->validate($request , [
+            'pesertadidik_id'=>'required',
+            'tanggal'=>'required',
+            'uangpangkal'=>'required',
+            'spp'=>'required',
+            'uangkegiatan'=>'required',
+            'uangperlengkapan'=>'required',
+        ]);
+
+        $result = preg_replace("/[^0-9]/", "", $request->masuk);
+        $data->pesertadidik_id = $request->pesertadidik_id;
+        $data->tanggal = $request->tanggal;
+        $data->uangpangkal = preg_replace("/[^0-9]/", "", $request->uangpangkal);
+        $data->spp = preg_replace("/[^0-9]/", "", $request->spp);
+        $data->uangkegiatan = preg_replace("/[^0-9]/", "", $request->uangkegiatan);
+        $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
+        $data->update();
+
+        return redirect()->back();
+
     }
 
     /**
@@ -95,8 +117,8 @@ class MasukController extends Controller
      */
     public function destroy($id)
     {
-        $data = Keluar::find($id);
-        $data->delete();
+        $masuk = Masuk::find($id);
+        $masuk->delete();
 
         return redirect()->back();
     }

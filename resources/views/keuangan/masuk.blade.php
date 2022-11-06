@@ -47,8 +47,7 @@
                                         <div class="mb-3">
                                             <select class="form-select" id="basicSelect" name="pesertadidik_id">
                                                 @foreach ($siswa as $s)
-                                                    
-                                                <option value="{{ $s->id }}">{{ $s->siswa }}</option>
+                                                    <option value="{{ $s->id }}">{{ $s->siswa }}</option>
                                                 @endforeach
                                                 {{-- <option>Blade Runner</option>
                                                 <option>Thor Ragnarok</option> --}}
@@ -64,7 +63,8 @@
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Uang Pangkal</label>
                                             <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="contoh: Rp 17.333" name="uangpangkal" onkeyup="formatbaru(event)">
+                                                placeholder="contoh: Rp 17.333" name="uangpangkal"
+                                                onkeyup="formatbaru(event)">
                                         </div>
 
                                         <div class="mb-3">
@@ -76,13 +76,15 @@
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Uang Kegiatan</label>
                                             <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="contoh: Rp 17.333" name="uangkegiatan" onkeyup="formatbaru(event)">
+                                                placeholder="contoh: Rp 17.333" name="uangkegiatan"
+                                                onkeyup="formatbaru(event)">
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Uang Perlengkapan</label>
                                             <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="contoh: Rp 17.333" name="uangperlengkapan" onkeyup="formatbaru(event)">
+                                                placeholder="contoh: Rp 17.333" name="uangperlengkapan"
+                                                onkeyup="formatbaru(event)">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -95,6 +97,113 @@
                         </div>
                     </div>
                     <!-- Modal ADD DATA -->
+
+                    {{-- Modal Edit Data --}}
+                    @foreach ($masuk as $d)
+                        <div class="modal fade" id="edit-masuk{{ $d->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit Pengeluaran</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form action={{ url('/masuk/edit/' . $d->id) }} method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('put')
+                                        <div class="modal-body">
+
+                                            <div class="mb-3">
+                                                <select class="choices form-select" id="basicSelect" name="pesertadidik_id"
+                                                    value="{{ $d->pesertadidik_id }}">
+                                                    @foreach ($siswa as $s)
+                                                        <option value="{{ $s->id }}" {{ $d->pesertadidik_id == $s->id ? 'selected' : '' }}>{{ $s->siswa }}</option>
+                                                    @endforeach
+                                                    {{-- <option>Blade Runner</option>
+                                                    <option>Thor Ragnarok</option> --}}
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="formGroupExampleInput2" class="form-label">tanggal</label>
+                                                <input type="date" class="form-control" id="formGroupExampleInput2"
+                                                    placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="formGroupExampleInput" class="form-label">Uang Pangkal</label>
+                                                <input type="text" min="1" name="uangpangkal" class="form-control"
+                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
+                                                    onkeyup="formatbaru(event)" autocomplete="off"
+                                                    value="{{ $d->uangpangkal }}">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="formGroupExampleInput" class="form-label">SPP</label>
+                                                <input type="text" min="1" name="spp" class="form-control"
+                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
+                                                    onkeyup="formatbaru(event)" autocomplete="off"
+                                                    value="{{ $d->spp }}">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="formGroupExampleInput" class="form-label">Uang Kegiatan</label>
+                                                <input type="text" min="1" name="uangkegiatan" class="form-control"
+                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
+                                                    onkeyup="formatbaru(event)" autocomplete="off"
+                                                    value="{{ $d->uangkegiatan }}">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="formGroupExampleInput" class="form-label">Uang Perlengkapan</label>
+                                                <input type="text" min="1" name="uangperlengkapan" class="form-control"
+                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
+                                                    onkeyup="formatbaru(event)" autocomplete="off"
+                                                    value="{{ $d->uangperlengkapan }}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- Modal Edit Data --}}
+
+                    {{-- Modal Delete --}}
+                    @foreach ($masuk as $m)
+                        <div class="modal fade" id="delete-masuk{{ $m->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form action={{ url('/masuk/delete/' . $m->id) }} method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-body">
+                                            <center class="mt-3">
+                                                <h5>
+                                                    apakah anda yakin ingin menghapus data ini?
+                                                </h5>
+                                            </center>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Tidak</button>
+                                            <button type="submit" class="btn btn-danger">Hapus!</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- Modal Delete --}}
 
                     <table class="table table-striped" id="table1">
                         <thead>
@@ -117,15 +226,15 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->siswa->siswa }}</td>
                                     <td>{{ date('d-m-Y h:i', strtotime($item->tanggal)) }}</td>
-                                    <td>Rp. @money((float)$item->uangpangkal)</td>
-                                    <td>Rp. @money((float)$item->spp)</td>
-                                    <td>Rp. @money((float)$item->uangkegiatan)</td>
-                                    <td>Rp. @money((float)$item->uangperlengkapan)</td>
+                                    <td>Rp. @money((float) $item->uangpangkal)</td>
+                                    <td>Rp. @money((float) $item->spp)</td>
+                                    <td>Rp. @money((float) $item->uangkegiatan)</td>
+                                    <td>Rp. @money((float) $item->uangperlengkapan)</td>
                                     <td>
                                         <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="">Edit</i></a>
+                                            data-bs-target="#edit-masuk{{ $d->id }}">Edit</i></a>
                                         <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="">delete</i></a>
+                                            data-bs-target="#delete-masuk{{ $item->id }}">delete</i></a>
                                     </td>
                                 </tr>
                             @endforeach
