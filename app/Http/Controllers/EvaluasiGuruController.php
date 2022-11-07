@@ -14,7 +14,10 @@ class EvaluasiGuruController extends Controller
      */
     public function index()
     {
-        return view('data.evaluasiguru');
+        $data = EvaluasiGuru::all();
+        return view('data.evaluasiguru')->with([
+            'data'=>$data
+        ]);
     }
 
     /**
@@ -35,7 +38,18 @@ class EvaluasiGuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new EvaluasiGuru();
+
+        $data->nama = $request->nama;
+        $data->tanggal = $request->tanggal;
+        $data->s1 = $request->s1;
+        $data->s2 = $request->s2;
+        $data->s3 = $request->s3;
+        $data->penghargaan = $request->penghargaan;
+
+        $data->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -67,9 +81,26 @@ class EvaluasiGuruController extends Controller
      * @param  \App\Models\EvaluasiGuru  $evaluasiGuru
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EvaluasiGuru $evaluasiGuru)
+    public function update(Request $request, $id)
     {
-        //
+        $data = EvaluasiGuru::where('id', $id)->firstOrFail();
+
+        // dd($request->all());
+        $this->validate($request , [
+            'tanggal'=>'required',
+            'nama'=>'required',
+            'penghargaan'=>'required',
+        ]);
+
+        $data->tanggal = $request->tanggal;
+        $data->nama = $request->nama;
+        $data->s1 = $request->s1;
+        $data->s2 = $request->s2;
+        $data->s3 = $request->s3;
+        $data->penghargaan = $request->penghargaan;
+        $data->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +109,11 @@ class EvaluasiGuruController extends Controller
      * @param  \App\Models\EvaluasiGuru  $evaluasiGuru
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EvaluasiGuru $evaluasiGuru)
+    public function destroy($id)
     {
-        //
+        $data = EvaluasiGuru::find($id);
+        $data->delete();
+        
+        return redirect()->back();
     }
 }

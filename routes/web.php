@@ -8,6 +8,7 @@ use App\Http\Controllers\KesiapanGuruController;
 use App\Http\Controllers\MasukController;
 use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\PrasaranaController;
+use App\Models\EvaluasiGuru;
 use App\Models\Masuk;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,9 @@ Route::get('/kesiapanguru', [KesiapanGuruController::class, 'index']);
 
 //Evaluasi
 Route::get('/evaluasiguru', [EvaluasiGuruController::class, 'index']);
+Route::post('/store-evaluasi', [EvaluasiGuruController::class, 'store']);
+Route::put('/evaluasi/edit/{id}', [EvaluasiGuruController::class, 'update']);
+Route::delete('/evaluasi/delete/{id}', [EvaluasiGuruController::class, 'destroy']);
 //------------------------------Pendidik---------------------------------------
 
 //------------------------------Keuangan----------------------------------------

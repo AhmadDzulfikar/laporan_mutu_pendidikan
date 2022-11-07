@@ -181,6 +181,7 @@
                                     <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
                                 </td>
+                            </tr>
                         @endforeach
                     </table>
                 </div>

@@ -17,9 +17,9 @@ class CreateEvaluasiGurusTable extends Migration
             $table->bigIncrements('id');
             $table->longText('nama');
             $table->date('tanggal');
-            $table->text('s1');
-            $table->text('s2');
-            $table->text('s3');
+            $table->text('s1')->nullable();
+            $table->text('s2')->nullable();
+            $table->text('s3')->nullable();
             $table->longText('penghargaan');
             $table->timestamps();
         });
