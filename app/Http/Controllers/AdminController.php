@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('user.admin');
+        $admin = User::orderBy('name', 'ASC')->role('admin')->get();
+        return view('user.admin',compact('admin'));
     }
 
     /**
@@ -35,51 +37,42 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "gambar",
+            "name" => 'required',
+            "email" => 'required',
+            "password" => 'required|min:8'
+        ]);
+        $data = new User();
+        $data->gambar = $request->gambar;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        $data->assignRole('admin');
+        if($request->gambar){
+            $img = $request->file('gambar');
+            $filename = $img->getClientOriginalName();
+
+            if ($request->hasFile('gambar')) {
+                $request->file('gambar')->storeAs('/user',$filename);
+            }
+            $data->gambar = $request->file('gambar')->getClientOriginalName();
+        }
+
+        $data->save();
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
+    public function edit(Request $request,$id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $admin)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
-    {
-        //
+        $data = User::find($id);
+        $data->delete();
+        
+        return redirect()->back();
     }
 }

@@ -7,6 +7,7 @@ use App\Models\PesertaDidik;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
+
 class UserSeeder extends Seeder
 {
     /**
@@ -24,7 +25,7 @@ class UserSeeder extends Seeder
 
         ]);
 
-        // $owner->assignRole('owner');
+        $admin->assignRole('admin');
 
         $guru = User::create([
             'name' => 'Guru',
@@ -32,6 +33,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'gambar' => null
         ]);
+        $guru->assignRole('guru');
+
 
         $pd = PesertaDidik::create([
             'siswa' => 'siswa1',
@@ -44,10 +47,9 @@ class UserSeeder extends Seeder
             'tgl_lulus' => '2022-09-09'
         ]);
 
-        $masuk = Masuk::create([
-            'pesertadidik_id' => $pd->id
-            
-        ]);
+        // $masuk = Masuk::create([
+        //     'pesertadidik_id' => $pd->id
+        // ]);
 
         // $manager->assignRole('manager');
     }

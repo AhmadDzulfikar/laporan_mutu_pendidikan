@@ -15,7 +15,8 @@ class CreateMasuksTable extends Migration
     {
         Schema::create('masuks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pesertadidik_id')->constrained('pesertadidik');
+            $table->unsignedBigInteger('pesertadidik_id');
+            $table->foreign('pesertadidik_id')->references('id')->on('pesertadidik');
             $table->date('tanggal');
             $table->integer('uangpangkal');
             $table->integer('spp');

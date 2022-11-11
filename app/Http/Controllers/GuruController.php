@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class GuruController extends Controller
 {
@@ -14,7 +16,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('user.guru');
+        $guru = User::orderBy('name', 'ASC')->role('guru')->get();
+        return view('user.guru',compact('guru'));
     }
 
     /**
@@ -35,7 +38,30 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "gambar",
+            "name" => 'required',
+            "email" => 'required',
+            "password" => 'required|min:8'
+        ]);
+        $data = new User();
+        $data->gambar = $request->gambar;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        $data->assignRole('guru');
+        if($request->gambar){
+            $img = $request->file('gambar');
+            $filename = $img->getClientOriginalName();
+
+            if ($request->hasFile('gambar')) {
+                $request->file('gambar')->storeAs('/user',$filename);
+            }
+            $data->gambar = $request->file('gambar')->getClientOriginalName();
+        }
+
+        $data->save();
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +104,11 @@ class GuruController extends Controller
      * @param  \App\Models\Guru  $guru
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Guru $guru)
+    public function destroy($id)
     {
-        //
+        $data = User::find($id);
+        $data->delete();
+        
+        return redirect()->back();
     }
 }

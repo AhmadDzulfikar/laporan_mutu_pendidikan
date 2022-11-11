@@ -78,7 +78,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Inventory Web</title>
+    <title>Login - Yayasan Tarbiatul Wildan </title>
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
@@ -100,7 +100,6 @@
                                 <div class="text-center">
                                     <img src="assets/images/logo/favicon.svg" class="avatar-xl mb-2" alt="Logo"
                                         style="height:60px;width:60px;">
-
                                 </div>
                                 <div class="text-center mb-5">
                                     Laporan Yayasan Tarbiatul Wildan
@@ -108,7 +107,7 @@
                             </h5>
                         </div>
 
-
+                        {{-- MASUKKAN EMAIL --}}
                         <div class="form-group position-relative has-icon-left mb-0">
                             <input asp-for="email" type="email" name="email"
                                 class="form-control form-control-xl @error('email') is-invalid @enderror"
@@ -124,6 +123,9 @@
                                 </span>
                             </div>
                         @enderror
+                        {{-- MASUKKAN EMAIL --}}
+                        
+                        {{-- MASUKKAN PASSWORD --}}
                         <div class="form-group position-relative has-icon-left mt-4 mb-0">
                             <input asp-for="password" type="password" name="password"
                                 class="form-control form-control-xl  @error('password') is-invalid @enderror"
@@ -139,6 +141,8 @@
                                 </span>
                             </div>
                         @enderror
+                        {{-- MASUKKAN PASSWORD --}}
+                            
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     {{-- <div class="text-center mt-5 text-lg fs-4">
@@ -149,6 +153,8 @@
                     </div> --}}
                 </div>
             </div>
+
+            {{-- ----------------------------------------------------------------------------------------- --}}
             <div class="col-lg-7 d-none d-lg-block">
                 <div id="auth-right">
                     <img src="assets/images/samples/madrasah1.jpg" width="900px" height="713px">
@@ -160,4 +166,3 @@
 </body>
 
 </html>
-

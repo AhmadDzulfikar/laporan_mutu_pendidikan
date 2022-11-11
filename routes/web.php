@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EvaluasiGuruController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KeluarController;
@@ -30,10 +31,11 @@ Route::get('/', function () {
 
 //Main
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::put('dashboard/edit/user/{id}', [DashboardController::class, 'editUser']);
 
 //Data
 //------------------------------Peserta Didik----------------------------------------
-Route::get('/pesertadidik', [App\Http\Controllers\PesertaDidikController::class, 'index']);
+Route::get('/pesertadidik', [PesertaDidikController::class, 'index']);
 Route::post('/store-siswa', [PesertaDidikController::class, 'store']);
 Route::put('/siswa/edit/{id}', [PesertaDidikController::class, 'update']);
 Route::delete('siswa/delete/{id}', [PesertaDidikController::class, 'destroy']);
@@ -75,8 +77,12 @@ Route::delete('/prasarana/delete/{id}', [PrasaranaController::class, 'destroy'])
 
 //------------------------------USER----------------------------------------
 Route::get('/admin', [AdminController::class, 'index']);
+Route::post('/store-admin', [AdminController::class, 'store']);
+Route::delete('/admin/delete/{id}', [AdminController::class, 'destroy']);
 
 Route::get('/guru', [GuruController::class, 'index']);
+Route::post('/store-guru', [GuruController::class, 'store']);
+Route::delete('/guru/delete/{id}', [GuruController::class, 'destroy']);
 //------------------------------USER----------------------------------------
 
 Auth::routes();
