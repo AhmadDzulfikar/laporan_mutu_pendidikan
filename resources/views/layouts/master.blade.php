@@ -157,6 +157,8 @@
                         </li> --}}
 
                         <li class="sidebar-title">Settings</li>
+
+                        
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>

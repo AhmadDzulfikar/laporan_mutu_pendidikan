@@ -65,7 +65,33 @@ class AdminController extends Controller
 
     public function edit(Request $request,$id)
     {
-        //
+        $data = User::where('id', $id)->firstOrFail();
+
+        $this->validate($request, [
+            "gambar",
+            "name" => 'required',
+            "email" => 'required',
+            "password" => 'required|min:8'
+        ]);
+
+        $data = new User();
+        $data->gambar = $request->gambar;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        $data->assignRole('admin');
+        if($request->gambar){
+            $img = $request->file('gambar');
+            $filename = $img->getClientOriginalName();
+
+            if ($request->hasFile('gambar')) {
+                $request->file('gambar')->storeAs('/user',$filename);
+            }
+            $data->gambar = $request->file('gambar')->getClientOriginalName();
+        }
+        $data->save();
+
+        return redirect()->back();
     }
 
     public function destroy($id)

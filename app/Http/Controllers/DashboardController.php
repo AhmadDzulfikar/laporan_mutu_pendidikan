@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PesertaDidik;
+use App\Models\Prasarana;
 use App\Models\User;
 use Illuminate\Http\Request;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -17,9 +19,13 @@ class DashboardController extends Controller
     public function index()
     {
         $user = User::all();
-
-
-        return view('dashboard.index');
+        $data = PesertaDidik::all();    
+        $prasarana = Prasarana::where('kondisi','rusak')->get();
+        
+        $rusak = $prasarana->sum('jumlah');
+        $data = $data->count('siswa');
+                return view('dashboard.index',compact('user','data','rusak'));
+        
     }
 
     //edit user
