@@ -63,6 +63,9 @@ Route::post('/store-keluar', [KeluarController::class, 'store']);
 Route::put('/keluar/edit/{id}', [KeluarController::class, 'update']);
 Route::delete('/keluar/delete/{id}', [KeluarController::class, 'destroy']);
 
+Route::get('/keluar/cetak_pdf', [KeluarController::class, 'cetak_pdf']);
+
+
 //Masuk
 Route::get('/masuk', [MasukController::class, 'index']);
 Route::post('/store-masuk', [MasukController::class, 'store']);

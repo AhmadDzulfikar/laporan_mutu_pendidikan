@@ -17,7 +17,7 @@
                     <div class="row">
 
                         <div class="col-6 mb-3 col-md-2">
-                            <a href="/report/all" class="btn btn-danger ">EXPORT PDF</a>
+                            <a href="/keluar/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
                         </div>
 
                         <div class="col-6 col-md-2">
@@ -167,22 +167,24 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        @foreach ($data as $p)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $p->created_at }}</td>
-                                <td>{{ $p->uraian }}</td>
-                                <td>{{ $p->tanggal }}</td>
-                                <td>Rp. @money((float) $p->keluar) </td>
-                                <td>
-                                    <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
+                        <tbody>
+                            @foreach ($data as $p)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $p->created_at }}</td>
+                                    <td>{{ $p->uraian }}</td>
+                                    <td>{{ $p->tanggal }}</td>
+                                    <td>Rp. @money((float) $p->keluar) </td>
+                                    <td>
+                                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
 
-                                    <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
-                                </td>
-                            </tr>
-                        @endforeach
+                                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Keluar;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class KeluarController extends Controller
 {
@@ -18,6 +19,14 @@ class KeluarController extends Controller
         return view('keuangan.keluar')->with([
             'data'=> $data
         ]);
+    }
+
+    public function cetak_pdf()
+    {
+        $data = Keluar::all();
+
+        $pdf = PDF::loadview('pdf.keluar', ['data' => $data]);
+        return $pdf->download('laporan-pengeluaran.pdf');
     }
 
     /**
