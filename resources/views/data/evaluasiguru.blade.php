@@ -17,7 +17,7 @@
                     <div class="row">
 
                         <div class="col-6 mb-3 col-md-2">
-                            <a href="/report/all" class="btn btn-danger ">EXPORT PDF</a>
+                            <a href="/evaluasi/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
                         </div>
 
                         <div class="col-6 col-md-2">
@@ -126,29 +126,26 @@
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">S1</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
-                                                    placeholder="Masukkan S1" name="s1"
-                                                value="{{ $d->s1 }}">
+                                                    placeholder="Masukkan S1" name="s1" value="{{ $d->s1 }}">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">S2</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
-                                                    placeholder="Masukkan S2" name="s2"
-                                                value="{{ $d->s2 }}">
+                                                    placeholder="Masukkan S2" name="s2" value="{{ $d->s2 }}">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">S3</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
-                                                    placeholder="Masukkan S3" name="s3"
-                                                value="{{ $d->s3 }}">
+                                                    placeholder="Masukkan S3" name="s3" value="{{ $d->s3 }}">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">Penghargaan</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Masukkan Penghargaan" name="penghargaan"
-                                                value="{{ $d->penghargaan }}">
+                                                    value="{{ $d->penghargaan }}">
                                             </div>
 
                                         </div>
@@ -239,25 +236,27 @@
                             <th>Penghargaan</th> --}}
                             </tr>
                         </thead>
-                        @foreach ($data as $eg)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $eg->tanggal }}</td>
-                                <td>{{ $eg->nama }}</td>
-                                <td>{{ $eg->s1 }}</td>
-                                <td>{{ $eg->s2 }}</td>
-                                <td>{{ $eg->s3 }}</td>
-                                <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#viewdata{{ $p->id }}">View</i></a></td>
-                                <td>
-                                    <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
+                        <tbody>
+                            @foreach ($data as $eg)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $eg->tanggal }}</td>
+                                    <td>{{ $eg->nama }}</td>
+                                    <td>{{ $eg->s1 }}</td>
+                                    <td>{{ $eg->s2 }}</td>
+                                    <td>{{ $eg->s3 }}</td>
+                                    <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#viewdata{{ $p->id }}">View</i></a></td>
+                                    <td>
+                                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
 
-                                    <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
-                                </td>
-                            </tr>
-                        @endforeach
+                                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>

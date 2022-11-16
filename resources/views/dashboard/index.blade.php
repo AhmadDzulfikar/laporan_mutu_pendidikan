@@ -90,4 +90,6 @@
     </div>
 
     @include('dashboard/modal')
+
+    
 @endsection

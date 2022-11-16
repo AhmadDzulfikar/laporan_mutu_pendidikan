@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PesertaDidik;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PesertaDidikController extends Controller
 {
@@ -18,6 +19,14 @@ class PesertaDidikController extends Controller
         return view('data.pesertadidik')->with([
             'data'=> $data
         ]);
+    }
+
+    public function cetak_pdf()
+    {
+        $data = PesertaDidik::all();
+
+        $pdf = PDF::loadview('pdf.pesertadidik', ['data' => $data]);
+        return $pdf->download('laporan-pegawai.pdf');
     }
 
     /**
@@ -87,14 +96,14 @@ class PesertaDidikController extends Controller
         $data = PesertaDidik::where('id', $id)->firstOrFail();
 
         $this->validate($request, [
-            'siswa'=>'required',
-            'nisn'=>'required',
-            'tempat'=>'required',
-            'tgl_lahir'=>'required',
-            'no_tlp'=>'required',
-            'org_tua'=>'required',
-            'tgl_msk'=>'required',
-            'tgl_lulus'=>'required'
+            'siswa' => 'required',
+            'nisn' => 'required',
+            'tempat' => 'required',
+            'tgl_lahir' => 'required',
+            'no_tlp' => 'required',
+            'org_tua' => 'required',
+            'tgl_msk' => 'required',
+            'tgl_lulus' => 'required'
         ]);
 
         $data->siswa = $request->siswa;

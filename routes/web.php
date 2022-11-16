@@ -39,6 +39,8 @@ Route::get('/pesertadidik', [PesertaDidikController::class, 'index']);
 Route::post('/store-siswa', [PesertaDidikController::class, 'store']);
 Route::put('/siswa/edit/{id}', [PesertaDidikController::class, 'update']);
 Route::delete('siswa/delete/{id}', [PesertaDidikController::class, 'destroy']);
+
+Route::get('/pesertadidik/cetak_pdf', [PesertaDidikController::class, 'cetak_pdf']);
 //------------------------------Peserta Didik----------------------------------------
 
 //------------------------------Pendidik---------------------------------------
@@ -50,6 +52,8 @@ Route::get('/evaluasiguru', [EvaluasiGuruController::class, 'index']);
 Route::post('/store-evaluasi', [EvaluasiGuruController::class, 'store']);
 Route::put('/evaluasi/edit/{id}', [EvaluasiGuruController::class, 'update']);
 Route::delete('/evaluasi/delete/{id}', [EvaluasiGuruController::class, 'destroy']);
+
+Route::get('/evaluasi/cetak_pdf', [EvaluasiGuruController::class, 'cetak_pdf']);
 //------------------------------Pendidik---------------------------------------
 
 //------------------------------Keuangan----------------------------------------

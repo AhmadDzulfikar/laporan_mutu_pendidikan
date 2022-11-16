@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Keluar;
+use App\Models\Masuk;
 use App\Models\PesertaDidik;
 use App\Models\Prasarana;
 use App\Models\User;
@@ -20,8 +22,13 @@ class DashboardController extends Controller
     {
         $user = User::all();
         $data = PesertaDidik::all();    
+        $masuk = Masuk::all();
+        $keluar = Keluar::all();
+        
         $prasarana = Prasarana::where('kondisi','rusak')->get();
         
+        // $data_month_un_p[(int) $bulan_in_p] = Masuk::all(); 
+
         $rusak = $prasarana->sum('jumlah');
         $data = $data->count('siswa');
                 return view('dashboard.index',compact('user','data','rusak'));

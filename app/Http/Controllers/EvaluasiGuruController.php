@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EvaluasiGuru;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EvaluasiGuruController extends Controller
 {
@@ -18,6 +19,14 @@ class EvaluasiGuruController extends Controller
         return view('data.evaluasiguru')->with([
             'data'=>$data
         ]);
+    }
+
+    public function cetak_pdf()
+    {
+        $data = EvaluasiGuru::all();
+
+        $pdf = PDF::loadview('pdf.evaluasi', ['data' => $data]);
+        return $pdf->download('laporan-evaluasi-guru.pdf');
     }
 
     /**

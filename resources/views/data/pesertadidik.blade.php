@@ -18,7 +18,7 @@
                         <div class="row">
 
                             <div class="col-6 mb-3 col-md-2">
-                                <a href="/report/all" class="btn btn-danger ">EXPORT PDF</a>
+                                <a href="/pesertadidik/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
                             </div>
 
                             <div class="col-6 col-md-2">
@@ -213,7 +213,8 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action={{ url('/siswa/delete/' . $d->id) }} method="POST" enctype="multipart/form-data">
+                                        <form action={{ url('/siswa/delete/' . $d->id) }} method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             @method('DELETE')
                                             <div class="modal-body">
@@ -250,26 +251,29 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        @foreach ($data as $pd)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                {{-- <td>{{ $pd->created_at }}</td> --}}
-                                <td>{{ $pd->siswa }}</td>
-                                <td>{{ $pd->nisn }}</td>
-                                <td>{{ $pd->tempat }}</td>
-                                <td>{{ $pd->tgl_lahir }}</td>
-                                <td>{{ $pd->no_tlp }}</td>
-                                <td>{{ $pd->org_tua }}</td>
-                                <td>{{ $pd->tgl_msk }}</td>
-                                <td>{{ $pd->tgl_lulus }}</td>
-                                <td>
-                                    <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
+                        <tbody>
+                            @foreach ($data as $pd)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    {{-- <td>{{ $pd->created_at }}</td> --}}
+                                    <td>{{ $pd->siswa }}</td>
+                                    <td>{{ $pd->nisn }}</td>
+                                    <td>{{ $pd->tempat }}</td>
+                                    <td>{{ $pd->tgl_lahir }}</td>
+                                    <td>{{ $pd->no_tlp }}</td>
+                                    <td>{{ $pd->org_tua }}</td>
+                                    <td>{{ $pd->tgl_msk }}</td>
+                                    <td>{{ $pd->tgl_lulus }}</td>
+                                    <td>
+                                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
 
-                                    <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
-                                </td>
-                        @endforeach
+                                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
