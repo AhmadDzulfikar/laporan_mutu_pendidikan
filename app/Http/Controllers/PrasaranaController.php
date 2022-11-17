@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Prasarana;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PrasaranaController extends Controller
 {
@@ -18,6 +19,14 @@ class PrasaranaController extends Controller
         return view('prasarana')->with([
             'data'=> $data
         ]);
+    }
+
+    public function cetak_pdf()
+    {
+        $data = Prasarana::all();
+
+        $pdf = PDF::loadview('pdf.prasarana', ['data' => $data]);
+        return $pdf->download('laporan-prasarana-guru.pdf');
     }
 
     /**
@@ -50,6 +59,7 @@ class PrasaranaController extends Controller
         $data->kondisi = $request->kondisi;
 
         $data->save();
+        toast()->success('Berhasil','Berhasil Menambah Sarana Prasarana')->position('top');
 
         return redirect()->back();
     }
@@ -103,6 +113,7 @@ class PrasaranaController extends Controller
         $data->tanggal = $request->tanggal;
         $data->kondisi = $request->kondisi;
         $data->update();
+        toast()->success('Berhasil','Berhasil Mengedit Sarana Prasarana')->position('top');
 
         return redirect()->back();
     }
@@ -117,6 +128,7 @@ class PrasaranaController extends Controller
     {
         $data = Prasarana::find($id);
         $data->delete();
+        toast()->success('Berhasil','Berhasil Menghapus Sarana Prasarana')->position('top');
         
         return redirect()->back();
     }

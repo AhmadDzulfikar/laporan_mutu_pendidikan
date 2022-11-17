@@ -13,17 +13,14 @@
 
     <link rel="stylesheet" href={{ asset('assets/css/pages/simple-datatables.css') }}>
     <link rel="stylesheet" href={{ asset('assets/css/shared/iconly.css') }}>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="/assets/css/pages/form-element-select.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-
 
 </head>
 
 <body>
+
+
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -95,8 +92,12 @@
                                 {{-- <li class="submenu-item {{ request()->is('in*') ? 'active' : '' }}">
                                     <a href={{ url('in') }}>Kehadiran</a>
                                 </li> --}}
-                                <li class="submenu-item {{ request()->is('kesiapanguru*') ? 'active' : '' }}">
-                                    <a href={{ url('/kesiapanguru') }}>Kesiapan</a>
+                                <li class="submenu-item {{ request()->is('evaluasiguru*') ? 'active' : '' }}">
+                                    <a href={{ url('/evaluasiguru') }}>Informasi Diri</a>
+                                </li>
+
+                                <li class="submenu-item {{ request()->is('prestasiguru*') ? 'active' : '' }}">
+                                    <a href={{ url('/prestasiguru') }}>Prestasi</a>
                                 </li>
                                 {{-- <li
                                     class="submenu-item {{ request()->is('/out*') ? 'active' : '' }}">
@@ -106,9 +107,7 @@
                                     class="submenu-item {{ request()->is('/out*') ? 'active' : '' }}">
                                     <a href={{ url('/out') }}>Ide</a>
                                 </li> --}}
-                                <li class="submenu-item {{ request()->is('evaluasiguru*') ? 'active' : '' }}">
-                                    <a href={{ url('/evaluasiguru') }}>Evaluasi</a>
-                                </li>
+
                             </ul>
                         </li>
 
@@ -144,38 +143,24 @@
 
                         <hr class="divider">
 
-                        {{-- <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-clipboard-check-fill"></i>                                
-                                <span>Report</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item {{ request()->is('reportProduct*') ? 'active' : '' }}">
-                                    <a href={{ url('reportProduct') }}>Report Product</a>
-                                </li>
-                                <li class="submenu-item {{ request()->is('reportPenjualan*') ? 'active' : '' }}">
-                                    <a href={{ url('reportPenjualan') }}>Report Penjualan</a>
-                                </li>
-                            </ul>
-                        </li> --}}
-
                         <li class="sidebar-title">Settings</li>
 
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>User</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item {{ request()->is('admin*') ? 'active' : '' }}">
-                                    <a href={{ url('/admin') }}>Admin</a>
-                                </li>
-                                <li class="submenu-item {{ request()->is('guru*') ? 'active' : '' }}">
-                                    <a href={{ url('/guru') }}>Guru</a>
-                                </li>
-                            </ul>
-                        </li>
+                        @hasrole('admin')
+                            <li class="sidebar-item  has-sub">
+                                <a href="#" class='sidebar-link'>
+                                    <i class="bi bi-people-fill"></i>
+                                    <span>User</span>
+                                </a>
+                                <ul class="submenu ">
+                                    <li class="submenu-item {{ request()->is('admin*') ? 'active' : '' }}">
+                                        <a href={{ url('/admin') }}>Admin</a>
+                                    </li>
+                                    <li class="submenu-item {{ request()->is('guru*') ? 'active' : '' }}">
+                                        <a href={{ url('/guru') }}>Guru</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endhasrole
 
                         <li class="sidebar-item  ">
                             <a href="{{ route('logout') }}"
@@ -204,7 +189,7 @@
 
         </div>
     </div>
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
 
     <script src={{ asset('assets/js/app.js') }}></script>
 
@@ -219,6 +204,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 
 </body>

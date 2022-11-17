@@ -28,32 +28,27 @@
         <thead>
             <tr>
                 <th>No</th>
-                {{-- <th>Tanggal</th> --}}
-                <th>Nama</th>
-                <th>NISN</th>
-                <th>Tempat</th>
-                <th>Tanggal Lahir</th>
-                <th>No Telp</th>
-                <th>OrangTua</th>
-                <th>Tanggal Masuk</th>
-                <th>Tanggal Lulus</th>
+                <th>Nama Siswa</th>
+                <th>Tanggal</th>
+                <th>Uang Pangkal</th>
+                <th>SPP</th>
+                <th>Uang Kegiatan</th>
+                <th>Uang Perlengkapan</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $pd)
+            @foreach ($masuk as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    {{-- <td>{{ $pd->created_at }}</td> --}}
-                    <td>{{ $pd->siswa }}</td>
-                    <td>{{ $pd->nisn }}</td>
-                    <td>{{ $pd->tempat }}</td>
-                    <td>{{ $pd->tgl_lahir }}</td>
-                    <td>{{ $pd->no_tlp }}</td>
-                    <td>{{ $pd->org_tua }}</td>
-                    <td>{{ $pd->tgl_msk }}</td>
-                    <td>{{ $pd->tgl_lulus }}</td>
+                    <td>{{ $item->siswa->siswa }}</td>
+                    <td>{{ date('d-m-Y h:i', strtotime($item->tanggal)) }}</td>
+                    <td>Rp. @money((float) $item->uangpangkal)</td>
+                    <td>Rp. @money((float) $item->spp)</td>
+                    <td>Rp. @money((float) $item->uangkegiatan)</td>
+                    <td>Rp. @money((float) $item->uangperlengkapan)</td>
                 </tr>
             @endforeach
+            {{-- TUTUP PERIODE --}}
         </tbody>
     </table>
 

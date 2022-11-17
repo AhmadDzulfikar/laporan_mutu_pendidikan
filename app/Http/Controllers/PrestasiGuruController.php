@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EvaluasiGuru;
+use App\Models\PrestasiGuru;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-
-class EvaluasiGuruController extends Controller
+class PrestasiGuruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +15,18 @@ class EvaluasiGuruController extends Controller
      */
     public function index()
     {
-        $data = EvaluasiGuru::all();
-        return view('data.evaluasiguru')->with([
-            'data'=>$data
+        $data = PrestasiGuru::all();
+        return view('data.prestasiguru')->with([
+            'data' => $data
         ]);
     }
 
     public function cetak_pdf()
     {
-        $data = EvaluasiGuru::all();
+        $data = PrestasiGuru::all();
 
-        $pdf = PDF::loadview('pdf.evaluasi', ['data' => $data]);
-        return $pdf->download('laporan-informasi-pendidik.pdf');
+        $pdf = PDF::loadview('pdf.prestasiguru', ['data' => $data]);
+        return $pdf->download('laporan-prestasi-guru.pdf');
     }
 
     /**
@@ -48,17 +47,14 @@ class EvaluasiGuruController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new EvaluasiGuru();
+        $data = new PrestasiGuru();
 
         $data->nama = $request->nama;
         $data->tanggal = $request->tanggal;
-        $data->s1 = $request->s1;
-        $data->s2 = $request->s2;
-        $data->s3 = $request->s3;
-        $data->penghargaan = $request->penghargaan;
+        $data->keterangan = $request->keterangan;
 
         $data->save();
-        toast()->success('Berhasil','Berhasil Menambah Data Diri Pendidik')->position('top');
+        toast()->success('Berhasil', 'Berhasil Menambah Prestasi Pendidik')->position('top');
 
         return redirect()->back();
     }
@@ -66,10 +62,10 @@ class EvaluasiGuruController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EvaluasiGuru  $evaluasiGuru
+     * @param  \App\Models\PrestasiGuru  $prestasiGuru
      * @return \Illuminate\Http\Response
      */
-    public function show(EvaluasiGuru $evaluasiGuru)
+    public function show(PrestasiGuru $prestasiGuru)
     {
         //
     }
@@ -77,10 +73,10 @@ class EvaluasiGuruController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\EvaluasiGuru  $evaluasiGuru
+     * @param  \App\Models\PrestasiGuru  $prestasiGuru
      * @return \Illuminate\Http\Response
      */
-    public function edit(EvaluasiGuru $evaluasiGuru)
+    public function edit(PrestasiGuru $prestasiGuru)
     {
         //
     }
@@ -89,28 +85,25 @@ class EvaluasiGuruController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EvaluasiGuru  $evaluasiGuru
+     * @param  \App\Models\PrestasiGuru  $prestasiGuru
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data = EvaluasiGuru::where('id', $id)->firstOrFail();
+        $data = PrestasiGuru::where('id', $id)->firstOrFail();
 
         // dd($request->all());
-        $this->validate($request , [
-            'tanggal'=>'required',
-            'nama'=>'required',
-            'penghargaan'=>'required',
+        $this->validate($request, [
+            'nama' => 'required',
+            'tanggal' => 'required',
+            'keterangan' => 'required',
         ]);
 
-        $data->tanggal = $request->tanggal;
         $data->nama = $request->nama;
-        $data->s1 = $request->s1;
-        $data->s2 = $request->s2;
-        $data->s3 = $request->s3;
-        $data->penghargaan = $request->penghargaan;
+        $data->tanggal = $request->tanggal;
+        $data->keterangan = $request->keterangan;
         $data->update();
-        toast()->success('Berhasil','Berhasil Mengedit Data Diri Pendidik')->position('top');
+        toast()->success('Berhasil', 'Berhasil Mengedit Prestasi Pendidik')->position('top');
 
         return redirect()->back();
     }
@@ -118,14 +111,14 @@ class EvaluasiGuruController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EvaluasiGuru  $evaluasiGuru
+     * @param  \App\Models\PrestasiGuru  $prestasiGuru
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data = EvaluasiGuru::find($id);
+        $data = PrestasiGuru::find($id);
         $data->delete();
-        toast()->success('Berhasil','Berhasil Menghapus Data Diri Pendidik')->position('top');
+        toast()->success('Berhasil','Berhasil Menghapus Data Prestasi Guru')->position('top');
         
         return redirect()->back();
     }

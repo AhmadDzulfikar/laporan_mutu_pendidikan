@@ -5,6 +5,7 @@ use App\Models\PesertaDidik;
 use App\Models\Keluar;
 use App\Models\Masuk;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MasukController extends Controller
 {
@@ -18,6 +19,14 @@ class MasukController extends Controller
         $masuk = Masuk::get();
         $siswa = PesertaDidik::all();
         return view('keuangan.masuk',compact('masuk','siswa'));
+    }
+
+    public function cetak_pdf()
+    {
+        $masuk = Masuk::all();
+
+        $pdf = PDF::loadview('pdf.pemasukkan', ['masuk' => $masuk]);
+        return $pdf->download('laporan-pemasukkan.pdf');
     }
 
     /**
@@ -48,7 +57,7 @@ class MasukController extends Controller
         $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
         // dd($data->uangperlengkapan);
         $data->save();
-
+        toast()->success('Berhasil','Berhasil Menambah Pemasukkan')->position('top');
         return redirect()->back();
 
     }
@@ -104,7 +113,7 @@ class MasukController extends Controller
         $data->uangkegiatan = preg_replace("/[^0-9]/", "", $request->uangkegiatan);
         $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
         $data->update();
-
+        toast()->success('Berhasil','Berhasil Mengedit Pemasukkan')->position('top');
         return redirect()->back();
 
     }
@@ -120,6 +129,7 @@ class MasukController extends Controller
         $masuk = Masuk::find($id);
         $masuk->delete();
 
+        toast()->success('Berhasil','Berhasil Menghapus Pemasukkan')->position('top');
         return redirect()->back();
     }
 }

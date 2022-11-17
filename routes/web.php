@@ -9,6 +9,7 @@ use App\Http\Controllers\KesiapanGuruController;
 use App\Http\Controllers\MasukController;
 use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\PrasaranaController;
+use App\Http\Controllers\PrestasiGuruController;
 use App\Models\EvaluasiGuru;
 use App\Models\Masuk;
 use Illuminate\Support\Facades\Auth;
@@ -44,10 +45,14 @@ Route::get('/pesertadidik/cetak_pdf', [PesertaDidikController::class, 'cetak_pdf
 //------------------------------Peserta Didik----------------------------------------
 
 //------------------------------Pendidik---------------------------------------
-//Kesiapan
-Route::get('/kesiapanguru', [KesiapanGuruController::class, 'index']);
+//Prestasi
+Route::get('/prestasiguru', [PrestasiGuruController::class, 'index']);
+Route::post('/store-prestasi', [PrestasiGuruController::class, 'store']);
+Route::put('/prestasi/edit/{id}', [PrestasiGuruController::class, 'update']);
+Route::delete('prestasi/delete/{id}', [PrestasiGuruController::class, 'destroy']);
 
-//Evaluasi
+Route::get('/prestasi/cetak_pdf', [PrestasiGuruController::class, 'cetak_pdf']);
+//Informasi Guru
 Route::get('/evaluasiguru', [EvaluasiGuruController::class, 'index']);
 Route::post('/store-evaluasi', [EvaluasiGuruController::class, 'store']);
 Route::put('/evaluasi/edit/{id}', [EvaluasiGuruController::class, 'update']);
@@ -71,6 +76,8 @@ Route::get('/masuk', [MasukController::class, 'index']);
 Route::post('/store-masuk', [MasukController::class, 'store']);
 Route::put('/masuk/edit/{id}', [MasukController::class, 'update']);
 Route::delete('/masuk/delete/{id}', [MasukController::class, 'destroy']);
+
+Route::get('/masuk/cetak_pdf', [MasukController::class, 'cetak_pdf']);
 //------------------------------Keuangan----------------------------------------
 
 //------------------------------prasarana----------------------------------------
@@ -80,6 +87,8 @@ Route::post('/store-prasarana', [PrasaranaController::class, 'store']);
 Route::post('show-prasarana/{id}', [PrasaranaController::class, 'show']);
 Route::put('/prasarana/edit/{id}', [PrasaranaController::class, 'update']);
 Route::delete('/prasarana/delete/{id}', [PrasaranaController::class, 'destroy']);
+
+Route::get('/prasarana/cetak_pdf', [PrasaranaController::class, 'cetak_pdf']);
 //------------------------------prasarana----------------------------------------
 
 //------------------------------USER----------------------------------------

@@ -58,6 +58,7 @@ class PesertaDidikController extends Controller
         $data->tgl_lulus = $request->tgl_lulus;
         //  
         $data->save();
+        toast()->success('Berhasil','Berhasil Menambah Pesertadidik')->position('top');
 
         return redirect()->back();
     }
@@ -115,6 +116,7 @@ class PesertaDidikController extends Controller
         $data->tgl_msk = $request->tgl_msk;
         $data->tgl_lulus = $request->tgl_lulus;
         $data->update();
+        toast()->success('Berhasil','Berhasil Mengedit Pesertadidik')->position('top');
 
         return redirect()->back();
     }
@@ -129,6 +131,7 @@ class PesertaDidikController extends Controller
     {
         $data = PesertaDidik::find($id);
         $data->delete();
+        toast()->success('Berhasil','Berhasil Menghapus Pesertadidik')->position('top');
 
         return redirect()->back();
     }

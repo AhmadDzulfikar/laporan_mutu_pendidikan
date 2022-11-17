@@ -15,8 +15,8 @@
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
 
-                        <div class="row">
-
+                        @if (!isset($data[0]->siswa))
+                        @else
                             <div class="col-6 mb-3 col-md-2">
                                 <a href="/pesertadidik/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
                             </div>
@@ -24,7 +24,7 @@
                             <div class="col-6 col-md-2">
                                 <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
                             </div>
-                        </div>
+                        @endif
 
                         <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
@@ -248,7 +248,10 @@
                                 <th>OrangTua</th>
                                 <th>Tanggal Masuk</th>
                                 <th>Tanggal Lulus</th>
-                                <th>Status</th>
+
+                                @hasrole('admin')
+                                    <th>Status</th>
+                                @endhasrole
                             </tr>
                         </thead>
                         <tbody>
@@ -264,13 +267,15 @@
                                     <td>{{ $pd->org_tua }}</td>
                                     <td>{{ $pd->tgl_msk }}</td>
                                     <td>{{ $pd->tgl_lulus }}</td>
-                                    <td>
-                                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
+                                    @hasrole('admin')
+                                        <td>
+                                            <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
 
-                                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
-                                    </td>
+                                            <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
+                                        </td>
+                                    @endhasrole
                                 </tr>
                             @endforeach
                         </tbody>

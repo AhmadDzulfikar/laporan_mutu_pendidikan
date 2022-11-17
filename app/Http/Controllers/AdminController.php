@@ -60,6 +60,8 @@ class AdminController extends Controller
         }
 
         $data->save();
+        toast()->success('Berhasil','Berhasil Menambah Admin')->position('top');
+
         return redirect()->back();
     }
 
@@ -90,6 +92,7 @@ class AdminController extends Controller
             $data->gambar = $request->file('gambar')->getClientOriginalName();
         }
         $data->save();
+        toast()->success('Berhasil','Berhasil Mengedit Admin')->position('top');
 
         return redirect()->back();
     }
@@ -98,6 +101,7 @@ class AdminController extends Controller
     {
         $data = User::find($id);
         $data->delete();
+        toast()->success('Berhasil','Berhasil Menghapus Admin')->position('top');
         
         return redirect()->back();
     }

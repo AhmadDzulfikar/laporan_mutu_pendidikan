@@ -61,6 +61,8 @@ class GuruController extends Controller
         }
 
         $data->save();
+        toast()->success('Berhasil','Berhasil Menambah Guru')->position('top');
+
         return redirect()->back();
     }
 
@@ -108,6 +110,7 @@ class GuruController extends Controller
     {
         $data = User::find($id);
         $data->delete();
+        toast()->success('Berhasil','Berhasil Menghapus Guru')->position('top');
         
         return redirect()->back();
     }

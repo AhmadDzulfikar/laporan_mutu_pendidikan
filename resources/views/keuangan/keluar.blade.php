@@ -15,14 +15,16 @@
                 <div class="card-body">
 
                     <div class="row">
+                        @if (!isset($data[0]->uraian))
+                        @else
+                            <div class="col-6 mb-3 col-md-2">
+                                <a href="/keluar/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
+                            </div>
 
-                        <div class="col-6 mb-3 col-md-2">
-                            <a href="/keluar/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
-                        </div>
-
-                        <div class="col-6 col-md-2">
-                            <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
-                        </div>
+                            <div class="col-6 col-md-2">
+                                <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
+                            </div>
+                        @endif
                     </div>
 
                     <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal"

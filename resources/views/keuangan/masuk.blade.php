@@ -15,14 +15,16 @@
                 <div class="card-body">
 
                     <div class="row">
-
+                        @if (!isset($masuk[0]->pesertadidik_id))
+                        @else
                         <div class="col-6 mb-3 col-md-2">
-                            <a href="/report/all" class="btn btn-danger ">EXPORT PDF</a>
+                            <a href="/masuk/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
                         </div>
 
                         <div class="col-6 col-md-2">
                             <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
                         </div>
+                        @endif
                     </div>
 
                     <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal"
@@ -116,10 +118,12 @@
                                         <div class="modal-body">
 
                                             <div class="mb-3">
-                                                <select class="choices form-select" id="basicSelect" name="pesertadidik_id"
-                                                    value="{{ $d->pesertadidik_id }}">
+                                                <select class="choices form-select" id="basicSelect"
+                                                    name="pesertadidik_id" value="{{ $d->pesertadidik_id }}">
                                                     @foreach ($siswa as $s)
-                                                        <option value="{{ $s->id }}" {{ $d->pesertadidik_id == $s->id ? 'selected' : '' }}>{{ $s->siswa }}</option>
+                                                        <option value="{{ $s->id }}"
+                                                            {{ $d->pesertadidik_id == $s->id ? 'selected' : '' }}>
+                                                            {{ $s->siswa }}</option>
                                                     @endforeach
                                                     {{-- <option>Blade Runner</option>
                                                     <option>Thor Ragnarok</option> --}}
@@ -134,10 +138,10 @@
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">Uang Pangkal</label>
-                                                <input type="text" min="1" name="uangpangkal" class="form-control"
-                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
-                                                    onkeyup="formatbaru(event)" autocomplete="off"
-                                                    value="{{ $d->uangpangkal }}">
+                                                <input type="text" min="1" name="uangpangkal"
+                                                    class="form-control" id="formGroupExampleInput"
+                                                    placeholder="Masukkan Jumlah" onkeyup="formatbaru(event)"
+                                                    autocomplete="off" value="{{ $d->uangpangkal }}">
                                             </div>
 
                                             <div class="mb-3">
@@ -149,19 +153,21 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Uang Kegiatan</label>
-                                                <input type="text" min="1" name="uangkegiatan" class="form-control"
-                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
-                                                    onkeyup="formatbaru(event)" autocomplete="off"
-                                                    value="{{ $d->uangkegiatan }}">
+                                                <label for="formGroupExampleInput" class="form-label">Uang
+                                                    Kegiatan</label>
+                                                <input type="text" min="1" name="uangkegiatan"
+                                                    class="form-control" id="formGroupExampleInput"
+                                                    placeholder="Masukkan Jumlah" onkeyup="formatbaru(event)"
+                                                    autocomplete="off" value="{{ $d->uangkegiatan }}">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Uang Perlengkapan</label>
-                                                <input type="text" min="1" name="uangperlengkapan" class="form-control"
-                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
-                                                    onkeyup="formatbaru(event)" autocomplete="off"
-                                                    value="{{ $d->uangperlengkapan }}">
+                                                <label for="formGroupExampleInput" class="form-label">Uang
+                                                    Perlengkapan</label>
+                                                <input type="text" min="1" name="uangperlengkapan"
+                                                    class="form-control" id="formGroupExampleInput"
+                                                    placeholder="Masukkan Jumlah" onkeyup="formatbaru(event)"
+                                                    autocomplete="off" value="{{ $d->uangperlengkapan }}">
                                             </div>
                                         </div>
                                         <div class="modal-footer">

@@ -5,7 +5,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Evaluasi Pendidik</h3>
+                    <h3>Informasi Diri Pendidik</h3>
                 </div>
 
             </div>
@@ -15,22 +15,22 @@
                 <div class="card-body">
 
                     <div class="row">
+                        @if (!isset($data[0]->nama))
+                        @else
+                            <div class="col-6 mb-3 col-md-2">
+                                <a href="/evaluasi/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
+                            </div>
 
-                        <div class="col-6 mb-3 col-md-2">
-                            <a href="/evaluasi/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
-                        </div>
-
-                        <div class="col-6 col-md-2">
-                            <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
-                        </div>
+                            <div class="col-6 col-md-2">
+                                <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
+                            </div>
+                        @endif
                     </div>
 
                     <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
                         Add +
                     </button>
-
-
 
                     <!-- Modal ADD DATA -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -230,7 +230,7 @@
                                 <th>S1</th>
                                 <th>S2</th>
                                 <th>S3</th>
-                                <th>Penghargaan</th>
+                                <th>Kompetensi</th>
                                 <th>Status</th>
                                 {{-- <th>Surat Tugas</th>
                             <th>Penghargaan</th> --}}

@@ -7,6 +7,7 @@ use App\Models\Masuk;
 use App\Models\PesertaDidik;
 use App\Models\Prasarana;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -29,10 +30,32 @@ class DashboardController extends Controller
         
         // $data_month_un_p[(int) $bulan_in_p] = Masuk::all(); 
 
+        $this_year = Carbon::now()->format('Y');
+                $month_p = Masuk::where('tanggal','like', $this_year.'%')->get();
+                $month_k = Keluar::where('tanggal','like', $this_year.'%')->get();
+
+                for ($i=1; $i <= 12; $i++){
+                    $data_month_p[(int)$i]=0;
+                    $data_month_k[(int)$i]=0;    
+
+                }
+        
+                foreach ($month_p as $a) {
+                    $bulan_p= explode('-',carbon::parse($a->tanggal)->format('Y-m-d'))[1];
+                    // dd($bulan_p);
+                        $data_month_p[(int) $bulan_p]+= $a->uangpangkal + $a->uangkegiatan + $a->spp + $a->uangperlengkapan; 
+                }
+                foreach ($month_k as $b) {
+                    $bulan_k= explode('-',carbon::parse($b->tanggal)->format('Y-m-d'))[1];
+                    // dd($bulan_k);
+                        $data_month_k[(int) $bulan_k]+= $b->keluar; 
+                }
+
         $rusak = $prasarana->sum('jumlah');
         $data = $data->count('siswa');
-                return view('dashboard.index',compact('user','data','rusak'));
-        
+                return view('dashboard.index',compact('user','data','rusak'))
+                -> with('data_month_p', $data_month_p)
+                -> with('data_month_k', $data_month_k);
     }
 
     //edit user

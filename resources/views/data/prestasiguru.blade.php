@@ -5,7 +5,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Sarana Prasarana</h3>
+                    <h3>Prestasi Pendidik</h3>
                 </div>
 
             </div>
@@ -15,10 +15,10 @@
                 <div class="card-body">
 
                     <div class="row">
-                        @if (!isset($data[0]->uraian))
+                        @if (!isset($data[0]->nama))
                         @else
                             <div class="col-6 mb-3 col-md-2">
-                                <a href="/prasarana/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
+                                <a href="/prestasi/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
                             </div>
 
                             <div class="col-6 col-md-2">
@@ -29,8 +29,10 @@
 
                     <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
-                        Add+
+                        Add +
                     </button>
+
+
 
                     <!-- Modal ADD DATA -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -38,54 +40,36 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Prasarana</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Prestasi Pendidik</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form method="POST" action={{ url('/store-prasarana') }} enctype="multipart/form-data">
+                                <form method="POST" action={{ url('/store-prestasi') }} enctype="multipart/form-data">
                                     @csrf
                                     @method('POST')
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Uraian</label>
-                                            <input type="text" name="uraian" class="form-control"
-                                                id="formGroupExampleInput" placeholder="Masukkan Uraian">
+                                            <label for="formGroupExampleInput" class="form-label">Tanggal</label>
+                                            <input type="date" class="form-control" id="formGroupExampleInput"
+                                                placeholder="Tanggal" name="tanggal">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Jumlah</label>
-                                            <input type="number" name="jumlah" class="form-control"
-                                                id="formGroupExampleInput" placeholder="Masukkan Jumlah">
+                                            <label for="formGroupExampleInput" class="form-label">Nama Guru</label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                                placeholder="Masukkan Nama Guru" name="nama">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput2" class="form-label">Tanggal Pembelian</label>
-                                            <input type="date" class="form-control" id="formGroupExampleInput2"
-                                                placeholder="tanggal" name="tanggal">
+                                            <label for="formGroupExampleInput" class="form-label">Keterangan</label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                                placeholder="Masukkan Keterangan" name="keterangan">
                                         </div>
-
-                                        {{-- <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Kondisi</label>
-                                                <input type="text" name="kondisi" class="form-control"
-                                                    id="formGroupExampleInput" placeholder="Kondisi Barang">
-                                            </div> --}}
-
-                                        <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Kondisi</label>
-                                            <select class="form-select" aria-label="Default select example" name="kondisi">
-                                                <option value="baik">Baik</option>
-                                                <option value="rusak">Rusak</option>
-                                            </select>
-
-                                            {{-- <input type="text" name="kondisi" class="form-control"
-                                                    id="formGroupExampleInput2"> --}}
-                                        </div>
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </form>
                             </div>
@@ -93,51 +77,41 @@
                     </div>
                     <!-- Modal ADD DATA -->
 
-
                     {{-- Modal Edit Data --}}
                     @foreach ($data as $d)
-                        <div class="modal fade" id="edit-prasarana{{ $d->id }}" tabindex="-1"
+                        <div class="modal fade" id="edit-keluar{{ $d->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Edit Prasarana</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit Prestasi Guru</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form action={{ url('/prasarana/edit/' . $d->id) }} method="POST"
+                                    <form action={{ url('/prestasi/edit/' . $d->id) }} method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
                                         @method('put')
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Uraian</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput"
-                                                    placeholder="Example input placeholder" name="uraian"
-                                                    value="{{ $d->uraian }}">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Jumlah</label>
-                                                <input type="number" min="1" name="jumlah" class="form-control"
-                                                    id="formGroupExampleInput" placeholder="Masukkan Jumlah"
-                                                    autocomplete="off" value="{{ $d->jumlah }}">
-                                            </div>
-
-                                            <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Tanggal
-                                                    Pembelian</label>
+                                                </label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Kondisi</label>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    name="kondisi" value="{{ $d->kondisi }}">
-                                                    <option value="baik">Baik</option>
-                                                    <option value="rusak">Rusak</option>
-                                                </select>
+                                                <label for="formGroupExampleInput" class="form-label">Nama Guru</label>
+                                                <input type="text" class="form-control" id="formGroupExampleInput"
+                                                    placeholder="Masukkan Nama Guru" name="nama"
+                                                    value="{{ $d->nama }}">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="formGroupExampleInput" class="form-label">Keterangan</label>
+                                                <input type="text" class="form-control" id="formGroupExampleInput"
+                                                    placeholder="Masukkan Keterangan" name="keterangan"
+                                                    value="{{ $d->keterangan }}">
                                             </div>
 
                                         </div>
@@ -153,13 +127,14 @@
                     @endforeach
                     {{-- Modal Edit Data --}}
 
+
                     {{-- Modal Delete --}}
                     @foreach ($data as $d)
-                        <div class="modal fade" id="delete-prasarana{{ $d->id }}" tabindex="-1"
+                        <div class="modal fade" id="delete-keluar{{ $d->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form action={{ url('/prasarana/delete/' . $d->id) }} method="POST"
+                                    <form action={{ url('/prestasi/delete/' . $d->id) }} method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
@@ -182,40 +157,64 @@
                     @endforeach
                     {{-- Modal Delete --}}
 
-                    {{-- <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Add +
-                </button> --}}
+                    {{-- ----------------------------------- INI VIEW ---------------------------------------- --}}
+                    @foreach ($data as $p)
+                        <div class="modal fade" id="viewdata{{ $p->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Detail Penghargaan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body ms-1 me-1">
+                                        <div class="d-flex justify-content-center">
+                                            <h5>Keterangan Penghargaan</h5>
+                                        </div>
+                                        <hr>
+
+                                        <div class="text-center">
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="penghargaan" disabled>{{ $p->keterangan }}</textarea>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- ----------------------------------- INI VIEW ---------------------------------------- --}}
+
+
                     <table class="table table-striped" id="table1">
                         <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Uraian</th>
-                                <th>Jumlah</th>
-                                <th>Tanggal Pembelian</th>
-                                <th>Kondisi</th>
-                                <th>Status</th>
-                                {{-- <th>Surat Tugas</th>
-                            <th>Penghargaan</th> --}}
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Nama</th>
+                                    <th>Keterangan</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
                         </thead>
                         <tbody>
-                            @foreach ($data as $pd)
+                            @foreach ($data as $eg)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $pd->created_at }}</td>
-                                    <td>{{ $pd->uraian }}</td>
-                                    <td>{{ $pd->jumlah }}</td>
-                                    <td>{{ date('d-m-Y h:i', strtotime($pd->tanggal)) }}</td>
-                                    {{-- <td>{{ date('d H:i',strtotime($pd->tanggal)) }}</td> --}}
-                                    <td>{{ $pd->kondisi }}</td>
+                                    <td>{{ $eg->tanggal }}</td>
+                                    <td>{{ $eg->nama }}</td>
+                                    <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#viewdata{{ $p->id }}">View</i></a></td>
                                     <td>
                                         <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
+                                            data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
 
                                         <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
+                                            data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
                                     </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
