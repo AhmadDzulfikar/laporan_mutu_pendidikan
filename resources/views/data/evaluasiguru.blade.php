@@ -81,6 +81,12 @@
                                             <input type="text" class="form-control" id="formGroupExampleInput"
                                                 placeholder="Masukkan penghargaan" name="penghargaan">
                                         </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Penghargaan</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="penghargaan"></textarea>
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -141,11 +147,17 @@
                                                     placeholder="Masukkan S3" name="s3" value="{{ $d->s3 }}">
                                             </div>
 
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">Penghargaan</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Masukkan Penghargaan" name="penghargaan"
                                                     value="{{ $d->penghargaan }}">
+                                            </div> --}}
+
+                                            <div class="form-group mb-3">
+                                                <label for="exampleFormControlTextarea1"
+                                                    class="form-label">Penghargaan</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="penghargaan">{{ $d->penghargaan }}</textarea>
                                             </div>
 
                                         </div>
@@ -246,13 +258,13 @@
                                     <td>{{ $eg->s2 }}</td>
                                     <td>{{ $eg->s3 }}</td>
                                     <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#viewdata{{ $p->id }}">View</i></a></td>
+                                            data-bs-target="#viewdata{{ $eg->id }}">View</i></a></td>
                                     <td>
                                         <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
+                                            data-bs-target="#edit-keluar{{ $eg->id }}">Edit</i></a>
 
                                         <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
+                                            data-bs-target="#delete-keluar{{ $eg->id }}">delete</i></a>
                                     </td>
                                 </tr>
                             @endforeach

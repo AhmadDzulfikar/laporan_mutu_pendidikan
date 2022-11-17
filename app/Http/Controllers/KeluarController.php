@@ -104,7 +104,7 @@ class KeluarController extends Controller
         $data->tanggal = $request->tanggal;
         $data->keluar = $result;
         $data->update();
-        toast()->success('Berhasil','Berhasil Mengedit Pengeluaran')->position('top');
+        toast()->question('Berhasil','Berhasil Mengedit Pengeluaran')->position('top');
 
         return redirect()->back();
     }

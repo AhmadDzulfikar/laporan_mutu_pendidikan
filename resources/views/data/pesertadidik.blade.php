@@ -14,17 +14,19 @@
             <div class="card shadow mb-5">
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
+                        <div class="row">
 
-                        @if (!isset($data[0]->siswa))
-                        @else
-                            <div class="col-6 mb-3 col-md-2">
-                                <a href="/pesertadidik/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
-                            </div>
+                            @if (!isset($data[0]->siswa))
+                            @else
+                                <div class="col-6 mb-3 col-md-2">
+                                    <a href="/pesertadidik/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
+                                </div>
 
-                            <div class="col-6 col-md-2">
-                                <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
-                            </div>
-                        @endif
+                                <div class="col-6 col-md-2">
+                                    <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
+                                </div>
+                            @endif
+                        </div>
 
                         <button type="button" class="btn shadow btn-outline-primary mb-3" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">

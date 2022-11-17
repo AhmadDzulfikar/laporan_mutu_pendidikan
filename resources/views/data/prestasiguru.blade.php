@@ -60,11 +60,17 @@
                                                 placeholder="Masukkan Nama Guru" name="nama">
                                         </div>
 
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Keterangan</label>
                                             <input type="text" class="form-control" id="formGroupExampleInput"
                                                 placeholder="Masukkan Keterangan" name="keterangan">
+                                        </div> --}}
+
+                                        <div class="form-group mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="keterangan"></textarea>
                                         </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -112,6 +118,12 @@
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Masukkan Keterangan" name="keterangan"
                                                     value="{{ $d->keterangan }}">
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="exampleFormControlTextarea1"
+                                                    class="form-label">Keterangan</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="keterangan">{{ $d->keterangan }}</textarea>
                                             </div>
 
                                         </div>
@@ -176,7 +188,8 @@
                                         <hr>
 
                                         <div class="text-center">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="penghargaan" disabled>{{ $p->keterangan }}</textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="penghargaan" disabled>{{ $p->keterangan }}
+                                            </textarea>
                                         </div>
 
                                     </div>
@@ -206,13 +219,13 @@
                                     <td>{{ $eg->tanggal }}</td>
                                     <td>{{ $eg->nama }}</td>
                                     <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#viewdata{{ $p->id }}">View</i></a></td>
+                                            data-bs-target="#viewdata{{ $eg->id }}">View</i></a></td>
                                     <td>
                                         <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
+                                            data-bs-target="#edit-keluar{{ $eg->id }}">Edit</i></a>
 
                                         <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
+                                            data-bs-target="#delete-keluar{{ $eg->id }}">delete</i></a>
                                     </td>
                                 </tr>
                             @endforeach

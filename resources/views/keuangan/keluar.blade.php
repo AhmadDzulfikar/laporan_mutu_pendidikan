@@ -166,7 +166,9 @@
                                 <th>Uraian</th>
                                 <th>Tanggal Pengeluaran</th>
                                 <th>Pengeluaran</th>
-                                <th>Status</th>
+                                @hasrole('admin')
+                                    <th>Status</th>
+                                @endhasrole
                             </tr>
                         </thead>
                         <tbody>
@@ -177,13 +179,15 @@
                                     <td>{{ $p->uraian }}</td>
                                     <td>{{ $p->tanggal }}</td>
                                     <td>Rp. @money((float) $p->keluar) </td>
-                                    <td>
-                                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
+                                    @hasrole('admin')
+                                        <td>
+                                            <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#edit-keluar{{ $p->id }}">Edit</i></a>
 
-                                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
-                                    </td>
+                                            <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#delete-keluar{{ $p->id }}">delete</i></a>
+                                        </td>
+                                    @endhasrole
                                 </tr>
                             @endforeach
                         </tbody>

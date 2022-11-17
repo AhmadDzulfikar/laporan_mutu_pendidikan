@@ -17,13 +17,13 @@
                     <div class="row">
                         @if (!isset($masuk[0]->pesertadidik_id))
                         @else
-                        <div class="col-6 mb-3 col-md-2">
-                            <a href="/masuk/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
-                        </div>
+                            <div class="col-6 mb-3 col-md-2">
+                                <a href="/masuk/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
+                            </div>
 
-                        <div class="col-6 col-md-2">
-                            <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
-                        </div>
+                            <div class="col-6 col-md-2">
+                                <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
+                            </div>
                         @endif
                     </div>
 
@@ -221,7 +221,9 @@
                                 <th>SPP</th>
                                 <th>Uang Kegiatan</th>
                                 <th>Uang Perlengkapan</th>
-                                <th>Status</th>
+                                @hasrole('admin')
+                                    <th>Status</th>
+                                @endhasrole
                                 {{-- <th>Surat Tugas</th>
                             <th>Penghargaan</th> --}}
                             </tr>
@@ -236,12 +238,14 @@
                                     <td>Rp. @money((float) $item->spp)</td>
                                     <td>Rp. @money((float) $item->uangkegiatan)</td>
                                     <td>Rp. @money((float) $item->uangperlengkapan)</td>
-                                    <td>
-                                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-masuk{{ $d->id }}">Edit</i></a>
-                                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-masuk{{ $item->id }}">delete</i></a>
-                                    </td>
+                                    @hasrole('admin')
+                                        <td>
+                                            <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#edit-masuk{{ $d->id }}">Edit</i></a>
+                                            <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#delete-masuk{{ $item->id }}">delete</i></a>
+                                        </td>
+                                    @endhasrole
                                 </tr>
                             @endforeach
                             {{-- TUTUP PERIODE --}}

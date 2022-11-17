@@ -194,7 +194,9 @@
                                 <th>Jumlah</th>
                                 <th>Tanggal Pembelian</th>
                                 <th>Kondisi</th>
-                                <th>Status</th>
+                                @hasrole('admin')
+                                    <th>Status</th>
+                                @endhasrole
                                 {{-- <th>Surat Tugas</th>
                             <th>Penghargaan</th> --}}
                             </tr>
@@ -209,13 +211,15 @@
                                     <td>{{ date('d-m-Y h:i', strtotime($pd->tanggal)) }}</td>
                                     {{-- <td>{{ date('d H:i',strtotime($pd->tanggal)) }}</td> --}}
                                     <td>{{ $pd->kondisi }}</td>
-                                    <td>
-                                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
+                                    @hasrole('admin')
+                                        <td>
+                                            <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
 
-                                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
-                                    </td>
+                                            <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
+                                        </td>
+                                    @endhasrole
                             @endforeach
                         </tbody>
                     </table>
