@@ -76,12 +76,6 @@
                                                 placeholder="Pendidikan S3" name="s3">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Penghargaan</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="Masukkan penghargaan" name="penghargaan">
-                                        </div>
-
                                         <div class="form-group mb-3">
                                             <label for="exampleFormControlTextarea1" class="form-label">Penghargaan</label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="penghargaan"></textarea>
@@ -257,14 +251,25 @@
                                     <td>{{ $eg->s1 }}</td>
                                     <td>{{ $eg->s2 }}</td>
                                     <td>{{ $eg->s3 }}</td>
-                                    <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#viewdata{{ $eg->id }}">View</i></a></td>
+
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#viewdata{{ $eg->id }}"><i
+                                                    class="badge-circle badge-circle-ligh font-medium-1"
+                                                    data-feather="eye"></i></a>
+                                        </div>
+                                    </td>
                                     <td>
                                         <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-keluar{{ $eg->id }}">Edit</i></a>
+                                            data-bs-target="#edit-keluar{{ $eg->id }}"><i
+                                                class="badge-circle badge-circle-ligh font-medium-1"
+                                                data-feather="edit"></i></a>
 
                                         <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-keluar{{ $eg->id }}">delete</i></a>
+                                            data-bs-target="#delete-keluar{{ $eg->id }}"><i
+                                                class="badge-circle badge-circle-ligh font-medium-1"
+                                                data-feather="trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

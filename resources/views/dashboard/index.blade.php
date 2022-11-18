@@ -88,13 +88,22 @@
         @endhasrole
 
     </div>
-    <div class="card shadow">
-        <div class="card-body">
+    <div class="col-12 col-md-12">
+        <div class="card shadow">
+            <div class="card-header">
+                <h6>Statistik Pemasukkan dan Pengeluaran</h6>
+            </div>
 
-            <div class="col-12 col-md-12">
-                <div class="text-center">
-                    <canvas id="products_b"></canvas>
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-12 col-md-12">
+                        <div class="text-center">
+                            <canvas id="products_b"></canvas>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

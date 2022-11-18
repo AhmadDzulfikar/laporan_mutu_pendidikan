@@ -218,14 +218,24 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $eg->tanggal }}</td>
                                     <td>{{ $eg->nama }}</td>
-                                    <td><a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#viewdata{{ $eg->id }}">View</i></a></td>
+                                    <td>
+                                        <div class="d-flex justify-content-left">
+                                            <a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#viewdata{{ $eg->id }}"><i
+                                                    class="badge-circle badge-circle-ligh font-medium-1"
+                                                    data-feather="eye"></i></a>
+                                        </div>
+                                    </td>
                                     <td>
                                         <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#edit-keluar{{ $eg->id }}">Edit</i></a>
+                                            data-bs-target="#edit-keluar{{ $eg->id }}"><i
+                                                class="badge-circle badge-circle-ligh font-medium-1"
+                                                data-feather="edit"></i></a>
 
                                         <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#delete-keluar{{ $eg->id }}">delete</i></a>
+                                            data-bs-target="#delete-keluar{{ $eg->id }}"><i
+                                                class="badge-circle badge-circle-ligh font-medium-1"
+                                                data-feather="trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

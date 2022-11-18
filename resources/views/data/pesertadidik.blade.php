@@ -248,7 +248,7 @@
                                 <th>Tanggal Lahir</th>
                                 <th>No Telp</th>
                                 <th>OrangTua</th>
-                                <th>Tanggal Masuk</th>
+                                <th>Tahun</th>
                                 <th>Tanggal Lulus</th>
 
                                 @hasrole('admin')
@@ -272,10 +272,14 @@
                                     @hasrole('admin')
                                         <td>
                                             <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#edit-prasarana{{ $pd->id }}">Edit</i></a>
+                                                data-bs-target="#edit-prasarana{{ $pd->id }}"><i
+                                                class="badge-circle badge-circle-ligh font-medium-1"
+                                                data-feather="edit"></i></a>
 
                                             <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#delete-prasarana{{ $pd->id }}">delete</i></a>
+                                                data-bs-target="#delete-prasarana{{ $pd->id }}"><i
+                                                class="badge-circle badge-circle-ligh font-medium-1"
+                                                data-feather="trash"></i></a>
                                         </td>
                                     @endhasrole
                                 </tr>
