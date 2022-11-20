@@ -18,12 +18,17 @@
                         @if (!isset($data[0]->nama))
                         @else
                             <div class="col-6 mb-3 col-md-2">
-                                <a href="/prestasi/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
+                                <a href="/prestasi/cetak_pdf" class="btn btn-danger "><i class="bi bi-filetype-pdf"></i>
+                                    Export</a>
                             </div>
 
                             <div class="col-6 col-md-2">
-                                <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
+                                <a href="/excel/barang" class="btn btn-success" target="_blank"><i
+                                        class="bi bi-file-excel"></i>
+                                    Export</a>
                             </div>
+
+                            <hr class="divider">
                         @endif
                     </div>
 

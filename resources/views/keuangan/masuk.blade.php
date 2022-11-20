@@ -18,12 +18,17 @@
                         @if (!isset($masuk[0]->pesertadidik_id))
                         @else
                             <div class="col-6 mb-3 col-md-2">
-                                <a href="/masuk/cetak_pdf" class="btn btn-danger ">EXPORT PDF</a>
+                                <a href="/masuk/cetak_pdf" class="btn btn-danger "><i class="bi bi-filetype-pdf"></i>
+                                    Export</a>
                             </div>
 
                             <div class="col-6 col-md-2">
-                                <a href="/excel/barang" class="btn btn-success" target="_blank">EXPORT EXCEL</a>
+                                <a href="/excel/barang" class="btn btn-success" target="_blank"><i
+                                        class="bi bi-file-excel"></i>
+                                    Export</a>
                             </div>
+
+                            <hr class="divider">
                         @endif
                     </div>
 
@@ -48,6 +53,7 @@
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <select class="form-select" id="basicSelect" name="pesertadidik_id">
+                                                <option selected>Pilih Nama Peserta Didik</option>
                                                 @foreach ($siswa as $s)
                                                     <option value="{{ $s->id }}">{{ $s->siswa }}</option>
                                                 @endforeach
@@ -242,14 +248,14 @@
                                         <td>
                                             <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#edit-masuk{{ $d->id }}"> <i
-                                                class="badge-circle badge-circle-ligh font-medium-1"
-                                                data-feather="edit"></i> </a>
+                                                    class="badge-circle badge-circle-ligh font-medium-1"
+                                                    data-feather="edit"></i> </a>
 
                                             <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#delete-masuk{{ $item->id }}"> <i
-                                                class="badge-circle badge-circle-ligh font-medium-1"
-                                                data-feather="trash"></i> </a>
-                                
+                                                    class="badge-circle badge-circle-ligh font-medium-1"
+                                                    data-feather="trash"></i> </a>
+
                                         </td>
                                     @endhasrole
                                 </tr>
