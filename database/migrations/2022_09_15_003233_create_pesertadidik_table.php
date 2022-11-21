@@ -22,7 +22,7 @@ class CreatePesertadidikTable extends Migration
             $table->bigInteger('no_tlp');
             $table->string('org_tua');
             $table->date('tgl_msk');
-            $table->date('tgl_lulus');
+            $table->date('tgl_lulus')->nullable();
             $table->timestamps();
         });
     }

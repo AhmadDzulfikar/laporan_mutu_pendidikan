@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Keluar;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 
 class KeluarController extends Controller
 {
@@ -17,7 +18,7 @@ class KeluarController extends Controller
     {
         $data = Keluar::all();
         return view('keuangan.keluar')->with([
-            'data'=> $data
+            'data' => $data
         ]);
     }
 
@@ -27,6 +28,31 @@ class KeluarController extends Controller
 
         $pdf = PDF::loadview('pdf.keluar', ['data' => $data]);
         return $pdf->download('laporan-pengeluaran.pdf');
+    }
+
+    public function cetak_periode_pdf(Request $request)
+    {
+        $tgl1 = carbon::parse($request->tgl1)->format('Y-m-d H:i:s');
+        $tgl2 = carbon::parse($request->tgl2)->format('Y-m-d H:i:s');
+        $data = Keluar::whereBetween('tanggal', [$tgl1, $tgl2])->get();
+        $keluar = Keluar::all();
+        // $tot_all = $data->sum('qty_m') + $data->sum('qty_k') + $data->sum('qty_r');
+        // $tot_m = $data->sum('qty_m');
+        // $tot_k = $data->sum('qty_k');
+        // $tot_r = $data->sum('qty_r');
+
+        // dd($data);
+        $pdf = PDF::loadview('periode.keluar', [
+            'data' => $data,
+            'tgl1' => $tgl1,
+            'tgl2' => $tgl2,
+            'keluar' => $keluar,
+            // 'tot_all' => $tot_all,
+            // 'tot_m' => $tot_m,
+            // 'tot_k' => $tot_k,
+            // 'tot_r' => $tot_r,
+        ]);
+        return $pdf->download('laporan-rekap-periode-pengeluaran.pdf');
     }
 
     /**
@@ -54,7 +80,7 @@ class KeluarController extends Controller
         $data->keluar = $result;
 
         $data->save();
-        toast()->success('Berhasil','Berhasil Menambah Pengeluaran')->position('top');
+        toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
 
         return redirect()->back();
     }
@@ -93,10 +119,10 @@ class KeluarController extends Controller
         $data = Keluar::where('id', $id)->firstOrFail();
 
         // dd($request->all());
-        $this->validate($request , [
-            'uraian'=>'required',
-            'tanggal'=>'required',
-            'keluar'=>'required',
+        $this->validate($request, [
+            'uraian' => 'required',
+            'tanggal' => 'required',
+            'keluar' => 'required',
         ]);
 
         $result = preg_replace("/[^0-9]/", "", $request->keluar);
@@ -104,7 +130,7 @@ class KeluarController extends Controller
         $data->tanggal = $request->tanggal;
         $data->keluar = $result;
         $data->update();
-        toast()->question('Berhasil','Berhasil Mengedit Pengeluaran')->position('top');
+        toast()->question('Berhasil', 'Berhasil Mengedit Pengeluaran')->position('top');
 
         return redirect()->back();
     }
@@ -119,7 +145,7 @@ class KeluarController extends Controller
     {
         $data = Keluar::find($id);
         $data->delete();
-        
+
         return redirect()->back();
     }
 }
