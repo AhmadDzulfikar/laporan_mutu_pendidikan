@@ -60,16 +60,15 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Nama Guru</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="Masukkan Nama Guru" name="nama">
+                                            <select class="form-select" id="basicSelect" name="evaluasi_guru_id">
+                                                <option value="0">Pilih Nama Guru</option>
+                                                @foreach ($nama as $n)
+                                                    <option value="{{ $n->id }}">{{ $n->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
-                                        {{-- <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Keterangan</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="Masukkan Keterangan" name="keterangan">
-                                        </div> --}}
+
 
                                         <div class="form-group mb-3">
                                             <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
@@ -113,16 +112,16 @@
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">Nama Guru</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput"
-                                                    placeholder="Masukkan Nama Guru" name="nama"
-                                                    value="{{ $d->nama }}">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Keterangan</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput"
-                                                    placeholder="Masukkan Keterangan" name="keterangan"
-                                                    value="{{ $d->keterangan }}">
+                                                <select class="choices form-select" id="basicSelect"
+                                                    name="evaluasi_guru_id" value="{{ $d->evaluasi_guru_id }}">
+                                                    @foreach ($nama as $n)
+                                                        <option value="{{ $n->id }}"
+                                                            {{ $n->evaluasi_guru_id == $n->id ? 'selected' : '' }}>
+                                                            {{ $n->nama }}</option>
+                                                    @endforeach
+                                                    {{-- <option>Blade Runner</option>
+                                                    <option>Thor Ragnarok</option> --}}
+                                                </select>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -222,7 +221,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $eg->tanggal }}</td>
-                                    <td>{{ $eg->nama }}</td>
+                                    {{-- <td>{{ $eg->nama }}</td> --}}
+                                    <td>{{ $eg->nama->nama }}</td>
                                     <td>
                                         <div class="d-flex justify-content-left">
                                             <a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"

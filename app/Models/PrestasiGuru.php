@@ -10,8 +10,13 @@ class PrestasiGuru extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
+        'evaluasi_guru_id',
         'tanggal',
         'keterangan'
     ];
+
+    public function nama()
+    {
+        return $this->belongsTo(EvaluasiGuru::class,'evaluasi_guru_id','id');
+    }
 }

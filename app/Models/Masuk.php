@@ -17,6 +17,7 @@ class Masuk extends Model
         'uangkegiatan',
         'uangperlengkapan'
     ];
+    
     public function siswa()
     {
         return $this->belongsTo(PesertaDidik::class,'pesertadidik_id','id');

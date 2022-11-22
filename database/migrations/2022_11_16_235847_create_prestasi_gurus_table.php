@@ -16,7 +16,8 @@ class CreatePrestasiGurusTable extends Migration
         Schema::create('prestasi_gurus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('tanggal');
-            $table->longText('nama');
+            $table->unsignedBigInteger('evaluasi_guru_id');
+            $table->foreign('evaluasi_guru_id')->references('id')->on('evaluasi_gurus');
             $table->longText('keterangan');
             $table->timestamps();
         });

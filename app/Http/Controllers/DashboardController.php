@@ -25,6 +25,7 @@ class DashboardController extends Controller
         $data = PesertaDidik::all();    
         $masuk = Masuk::all();
         $keluar = Keluar::all();
+        // dd($keluar)
         
         $prasarana = Prasarana::where('kondisi','rusak')->get();
         
@@ -53,7 +54,17 @@ class DashboardController extends Controller
 
         $rusak = $prasarana->sum('jumlah');
         $data = $data->count('siswa');
-                return view('dashboard.index',compact('user','data','rusak'))
+
+        $pangkal = Masuk::sum('uangpangkal');
+        $spp = Masuk::sum('spp');
+        $kegiatan = Masuk::sum('uangkegiatan');
+        $perlengkapan = Masuk::sum('uangperlengkapan');
+
+        $total_in = $pangkal + $spp + $kegiatan + $perlengkapan;
+        $total_out = Keluar::sum('keluar');
+        // dd($total_out);
+
+                return view('dashboard.index',compact('user','data','rusak', 'total_out','total_in'))
                 -> with('data_month_p', $data_month_p)
                 -> with('data_month_k', $data_month_k);
     }

@@ -18,4 +18,8 @@ class EvaluasiGuru extends Model
         'penghargaan'
     ];
 
+    public function prestasi_gurus() {
+        return $this->hasMany(PrestasiGuru::class);
+    }
+
 }

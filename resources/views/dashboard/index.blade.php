@@ -87,6 +87,45 @@
             </div>
         @endhasrole
 
+        <hr class="divider">
+
+        <div class="col-6 col-md-6">
+            <div class="card shadow">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-2 col-lg-12 col-xl-12 col-xxl-2 d-flex justify-content-start ">
+                            <div class="stats-icon blue mb-2">
+                                <i class="ibi bi-person-fill "></i>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-lg-12 col-xl-12 col-xxl-10">
+                            <h6 class="font-semibold text-muted">Jumlah Pemasukkan</h6>
+                            <h6 class="font-extrabold mb-0 text-success">Rp. @money((float)$total_in)</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-6">
+            <div class="card shadow">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-2 col-lg-12 col-xl-12 col-xxl-2 d-flex justify-content-start ">
+                            <div class="stats-icon red mb-2">
+                                <i class="ibi bi-tools"></i>    
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-lg-12 col-xl-12 col-xxl-10">
+                            <h6 class="font-semibold">Jumlah Pengeluaran</h6>
+                            <h6 class="font-extrabold mb-0 text-danger">Rp. @money((float)$total_out)</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <div class="col-12 col-md-12">
         <div class="card shadow">
@@ -96,7 +135,6 @@
 
             <div class="card-body">
                 <div class="row">
-
                     <div class="col-12 col-md-12">
                         <div class="text-center">
                             <canvas id="products_b"></canvas>

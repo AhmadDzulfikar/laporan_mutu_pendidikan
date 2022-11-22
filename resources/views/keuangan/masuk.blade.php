@@ -57,8 +57,6 @@
                                                 @foreach ($siswa as $s)
                                                     <option value="{{ $s->id }}">{{ $s->siswa }}</option>
                                                 @endforeach
-                                                {{-- <option>Blade Runner</option>
-                                                <option>Thor Ragnarok</option> --}}
                                             </select>
                                         </div>
 
