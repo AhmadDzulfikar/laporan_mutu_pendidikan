@@ -18,10 +18,10 @@ class EvaluasiGuruController extends Controller
     {
         $data = EvaluasiGuru::all();
         return view('data.evaluasiguru')->with([
-            'data'=>$data
+            'data' => $data
         ]);
     }
-
+    // PDF
     public function cetak_pdf()
     {
         $data = EvaluasiGuru::all();
@@ -46,37 +46,55 @@ class EvaluasiGuruController extends Controller
         ]);
         return $pdf->download('laporan-rekap-periode-informasi_guru.pdf');
     }
+    // Tutup PDF
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $data = new EvaluasiGuru();
+        if ($request->tanggal !== null && $request->nama !== null) {
+            $data = new EvaluasiGuru();
 
-        $data->nama = $request->nama;
-        $data->tanggal = $request->tanggal;
-        $data->s1 = $request->s1;
-        $data->s2 = $request->s2;
-        $data->s3 = $request->s3;
-        $data->penghargaan = $request->penghargaan;
+            $data->tanggal = $request->tanggal;
 
-        $data->save();
-        toast()->success('Berhasil','Berhasil Menambah Data Diri Pendidik')->position('top');
+            if ($request->nama === '0') {
+                toast()->error('Gagal', 'Gagal Menambah Data Diri Pendidik')->position('top');
+                return redirect()->back();
+            } else {
+                $data->nama = $request->nama;
+            }
 
+            if ($request->penghargaan === null) {
+                $data->penghargaan = '-';
+            } else {
+                $data->penghargaan = $request->penghargaan;
+            }
+
+            if ($request->s1 === null) {
+                $data->s1 = '-';
+            } else {
+                $data->s1 = $request->s1;
+            }
+
+            if ($request->s2 === null) {
+                $data->s2 = '-';
+            } else {
+                $data->s2 = $request->s2;
+            }
+
+            if ($request->s3 === null) {
+                $data->s3 = '-';
+            } else {
+                $data->s3 = $request->s3;
+            }
+
+            // $data->s1 = $request->s1;
+            // $data->s2 = $request->s2;
+            // $data->s3 = $request->s3;
+            // $data->penghargaan = $request->penghargaan;
+
+            $data->save();
+            toast()->success('Berhasil', 'Berhasil Menambah Data Diri Pendidik')->position('top');
+            return redirect()->back();
+        }
         return redirect()->back();
     }
 
@@ -114,10 +132,10 @@ class EvaluasiGuruController extends Controller
         $data = EvaluasiGuru::where('id', $id)->firstOrFail();
 
         // dd($request->all());
-        $this->validate($request , [
-            'tanggal'=>'required',
-            'nama'=>'required',
-            'penghargaan'=>'required',
+        $this->validate($request, [
+            'tanggal' => 'required',
+            'nama' => 'required',
+            'penghargaan' => 'required',
         ]);
 
         $data->tanggal = $request->tanggal;
@@ -127,7 +145,7 @@ class EvaluasiGuruController extends Controller
         $data->s3 = $request->s3;
         $data->penghargaan = $request->penghargaan;
         $data->update();
-        toast()->success('Berhasil','Berhasil Mengedit Data Diri Pendidik')->position('top');
+        toast()->success('Berhasil', 'Berhasil Mengedit Data Diri Pendidik')->position('top');
 
         return redirect()->back();
     }
@@ -142,8 +160,8 @@ class EvaluasiGuruController extends Controller
     {
         $data = EvaluasiGuru::find($id);
         $data->delete();
-        toast()->success('Berhasil','Berhasil Menghapus Data Diri Pendidik')->position('top');
-        
+        toast()->success('Berhasil', 'Berhasil Menghapus Data Diri Pendidik')->position('top');
+
         return redirect()->back();
     }
 }

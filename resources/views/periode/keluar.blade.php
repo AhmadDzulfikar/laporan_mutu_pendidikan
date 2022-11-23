@@ -26,7 +26,7 @@
 
     <table class='table table-bordered'>
 
-        <h5>Data Evaluasi Guru</h5>
+        <h5>Data Pengeluaran Periode</h5>
 
         <thead>
             <tr>

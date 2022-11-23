@@ -66,15 +66,11 @@ class PrestasiGuruController extends Controller
             }else{
                 $data->keterangan = $request->keterangan;
             }
-
             // dd($data);
-
                 $data->save();
                 toast()->success('Berhasil', 'Berhasil Menambah Prestasi Pendidik')->position('top');
                 return redirect()->back();
-
             }
-        
                 return redirect()->back();
 
     }

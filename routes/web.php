@@ -42,7 +42,7 @@ Route::put('/siswa/edit/{id}', [PesertaDidikController::class, 'update']);
 Route::delete('siswa/delete/{id}', [PesertaDidikController::class, 'destroy']);
 
 Route::get('/pesertadidik/cetak_pdf', [PesertaDidikController::class, 'cetak_pdf']);
-Route::post('/report/periode/barang', [PesertaDidikController::class, 'cetak_periode_pdf']);
+Route::post('/report/periode/pesertadidik', [PesertaDidikController::class, 'cetak_periode_pdf']);
 //------------------------------Peserta Didik----------------------------------------
 
 //------------------------------Pendidik---------------------------------------
@@ -71,7 +71,7 @@ Route::put('/keluar/edit/{id}', [KeluarController::class, 'update']);
 Route::delete('/keluar/delete/{id}', [KeluarController::class, 'destroy']);
 
 Route::get('/keluar/cetak_pdf', [KeluarController::class, 'cetak_pdf']);
-Route::post('/report/periode/barang', [KeluarController::class, 'cetak_periode_pdf']);
+Route::post('/report/periode/keluar', [KeluarController::class, 'cetak_periode_pdf']);
 
 //Masuk
 Route::get('/masuk', [MasukController::class, 'index']);
@@ -91,7 +91,7 @@ Route::put('/prasarana/edit/{id}', [PrasaranaController::class, 'update']);
 Route::delete('/prasarana/delete/{id}', [PrasaranaController::class, 'destroy']);
 
 Route::get('/prasarana/cetak_pdf', [PrasaranaController::class, 'cetak_pdf']);
-Route::post('/report/periode/barang', [PrasaranaController::class, 'cetak_periode_pdf']);
+Route::post('/report/periode/prasarana', [PrasaranaController::class, 'cetak_periode_pdf']);
 //------------------------------prasarana----------------------------------------
 
 //------------------------------USER----------------------------------------

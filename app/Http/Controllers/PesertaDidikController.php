@@ -65,19 +65,34 @@ class PesertaDidikController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new PesertaDidik();
-        $data->siswa = $request->siswa;
-        $data->nisn = $request->nisn;
-        $data->tempat = $request->tempat;
-        $data->tgl_lahir = $request->tgl_lahir;
-        $data->no_tlp = $request->no_tlp;
-        $data->org_tua = $request->org_tua;
-        $data->tgl_msk = $request->tgl_msk;
-        $data->tgl_lulus = $request->tgl_lulus;
-        //  
-        $data->save();
-        toast()->success('Berhasil', 'Berhasil Menambah Pesertadidik')->position('top');
+        if (
+            $request->nisn !== null && $request->siswa !== null
+            && $request->tempat !== null && $request->tgl_lahir !== null
+            && $request->no_tlp !== null
+            && $request->org_tua !== null
+            && $request->tgl_msk !== null
+        ) {
+            $data = new PesertaDidik();
 
+            $data->nisn = $request->nisn;
+            $data->tempat = $request->tempat;
+            $data->tgl_lahir = $request->tgl_lahir;
+            $data->no_tlp = $request->no_tlp;
+            $data->org_tua = $request->org_tua;
+            $data->tgl_msk = $request->tgl_msk;
+            $data->tgl_lulus = $request->tgl_lulus;
+
+            if ($request->siswa === null) {
+                toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
+                return redirect()->back();
+            } else {
+                $data->siswa = $request->siswa;
+            }
+
+            $data->save();
+            toast()->success('Berhasil', 'Berhasil Menambah Pesertadidik')->position('top');
+            return redirect()->back();
+        }
         return redirect()->back();
     }
 

@@ -65,15 +65,25 @@ class KeluarController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Keluar();
-        $result = preg_replace("/[^0-9]/", "", $request->keluar);
-        $data->uraian = $request->uraian;
-        $data->tanggal = $request->tanggal;
-        $data->keluar = $result;
+        if ($request->tanggal !== null && $request->uraian !== null  && $request->keluar !== null) {
 
-        $data->save();
-        toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
+            $data = new Keluar();
 
+            $data->tanggal = $request->tanggal;
+            $result = preg_replace("/[^0-9]/", "", $request->keluar);
+            $data->keluar = $result;
+
+            if ($request->uraian === 'null') {
+                toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
+                return redirect()->back();
+            } else {
+                $data->uraian = $request->uraian;
+            }
+            $data->save();
+            toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
+
+            return redirect()->back();
+        }
         return redirect()->back();
     }
 

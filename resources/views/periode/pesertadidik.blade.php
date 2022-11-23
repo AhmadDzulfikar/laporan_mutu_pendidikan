@@ -25,6 +25,9 @@
     <hr class="divider">
 
     <table class='table table-bordered'>
+
+        <h5>Data peserta Didik</h5>
+
         <thead>
             <tr>
                 <th>No</th>

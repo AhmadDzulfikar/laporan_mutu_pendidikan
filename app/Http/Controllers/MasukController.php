@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\PesertaDidik;
 use App\Models\Keluar;
 use App\Models\Masuk;
@@ -18,7 +19,7 @@ class MasukController extends Controller
     {
         $masuk = Masuk::get();
         $siswa = PesertaDidik::all();
-        return view('keuangan.masuk',compact('masuk','siswa'));
+        return view('keuangan.masuk', compact('masuk', 'siswa'));
     }
 
     public function cetak_pdf()
@@ -47,19 +48,29 @@ class MasukController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Masuk();
-        $result = preg_replace("/[^0-9]/", "", $request->masuk);
-        $data->pesertadidik_id = $request->pesertadidik_id;
-        $data->tanggal = $request->tanggal;
-        $data->uangpangkal = preg_replace("/[^0-9]/", "", $request->uangpangkal);
-        $data->spp = preg_replace("/[^0-9]/", "", $request->spp);
-        $data->uangkegiatan = preg_replace("/[^0-9]/", "", $request->uangkegiatan);
-        $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
-        // dd($data->uangperlengkapan);
-        $data->save();
-        toast()->success('Berhasil','Berhasil Menambah Pemasukkan')->position('top');
-        return redirect()->back();
+        if ($request->tanggal !== null && $request->pesertadidik_id !== null) {
+            $data = new Masuk();
 
+            $result = preg_replace("/[^0-9]/", "", $request->masuk);
+
+            $data->tanggal = $request->tanggal;
+            $data->uangpangkal = preg_replace("/[^0-9]/", "", $request->uangpangkal);
+            $data->spp = preg_replace("/[^0-9]/", "", $request->spp);
+            $data->uangkegiatan = preg_replace("/[^0-9]/", "", $request->uangkegiatan);
+            $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
+
+            if ($request->pesertadidik_id === '0') {
+                toast()->error('Gagal', 'Gagal Menambah Pemasukkan')->position('top');
+                return redirect()->back();
+            } else {
+                $data->pesertadidik_id = $request->pesertadidik_id;
+            }
+            $data->save();
+            toast()->success('Berhasil', 'Berhasil Menambah Pemasukkan')->position('top');
+            return redirect()->back();
+        }
+        // dd($data->uangperlengkapan);
+        return redirect()->back();
     }
 
     /**
@@ -96,13 +107,13 @@ class MasukController extends Controller
         $data = Masuk::where('id', $id)->firstOrFail();
 
         // dd($request->all());
-        $this->validate($request , [
-            'pesertadidik_id'=>'required',
-            'tanggal'=>'required',
-            'uangpangkal'=>'required',
-            'spp'=>'required',
-            'uangkegiatan'=>'required',
-            'uangperlengkapan'=>'required',
+        $this->validate($request, [
+            'pesertadidik_id' => 'required',
+            'tanggal' => 'required',
+            'uangpangkal' => 'required',
+            'spp' => 'required',
+            'uangkegiatan' => 'required',
+            'uangperlengkapan' => 'required',
         ]);
 
         $result = preg_replace("/[^0-9]/", "", $request->masuk);
@@ -113,9 +124,8 @@ class MasukController extends Controller
         $data->uangkegiatan = preg_replace("/[^0-9]/", "", $request->uangkegiatan);
         $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
         $data->update();
-        toast()->success('Berhasil','Berhasil Mengedit Pemasukkan')->position('top');
+        toast()->success('Berhasil', 'Berhasil Mengedit Pemasukkan')->position('top');
         return redirect()->back();
-
     }
 
     /**
@@ -129,7 +139,7 @@ class MasukController extends Controller
         $masuk = Masuk::find($id);
         $masuk->delete();
 
-        toast()->success('Berhasil','Berhasil Menghapus Pemasukkan')->position('top');
+        toast()->success('Berhasil', 'Berhasil Menghapus Pemasukkan')->position('top');
         return redirect()->back();
     }
 }

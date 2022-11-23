@@ -21,8 +21,9 @@
                         @else
                             <div class="card card-info ">
                                 <div class="card-body">
+                                    <h6>Tanggal Pengeluaran</h6>
                                     <div class="col-6 col-md-12">
-                                        <form action="/report/periode/barang" method="POST">
+                                        <form action="/report/periode/keluar" method="POST">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-12 col-md-4">
@@ -39,7 +40,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-6 mb-3 col-md-2">
                                 <a href="/keluar/cetak_pdf" class="btn btn-danger "><i class="bi bi-filetype-pdf"></i>
                                     Export</a>

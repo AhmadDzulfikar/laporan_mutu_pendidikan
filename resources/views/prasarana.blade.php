@@ -19,8 +19,10 @@
                         @else
                             <div class="card card-info ">
                                 <div class="card-body">
+                                    <h6>Tanggal Pembelian</h6>
+
                                     <div class="col-6 col-md-12">
-                                        <form action="/report/periode/barang" method="POST">
+                                        <form action="/report/periode/prasarana" method="POST">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-12 col-md-4">
