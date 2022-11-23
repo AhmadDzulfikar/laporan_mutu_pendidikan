@@ -18,6 +18,27 @@
 
                             @if (!isset($data[0]->siswa))
                             @else
+                                <div class="card card-info ">
+                                    <div class="card-body">
+                                        <div class="col-6 col-md-12">
+                                            <form action="/report/periode/barang" method="POST">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-12 col-md-4">
+                                                        <input class="form-control" type="date" name="tgl1">
+                                                    </div>
+                                                    <div class="col-12 col-md-4">
+                                                        <input class="form-control" type="date" name="tgl2">
+                                                    </div>
+                                                    <div class="col-12 col-md-4">
+                                                        <button type="submit" class="btn btn-danger ">CETAK Periode</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-6 mb-3 col-md-2">
                                     <a href="/pesertadidik/cetak_pdf" class="btn btn-danger "><i
                                             class="bi bi-filetype-pdf"></i>
@@ -85,19 +106,22 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Nama Orang Tua</label>
+                                                <label for="formGroupExampleInput" class="form-label">Nama Orang
+                                                    Tua</label>
                                                 <input type="text" name="org_tua" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan Nama Orang Tua">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput2" class="form-label">Tanggal Masuk</label>
+                                                <label for="formGroupExampleInput2" class="form-label">Tanggal
+                                                    Masuk</label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="Masukkan Tanggal Masuk Peserta Didik" name="tgl_msk">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput2" class="form-label">Tanggal Lulus</label>
+                                                <label for="formGroupExampleInput2" class="form-label">Tanggal
+                                                    Lulus</label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="Masukkan Tanggal Lulus Peserta Didik" name="tgl_lulus">
                                             </div>
@@ -249,6 +273,7 @@
                                 <th>No</th>
                                 {{-- <th>Tanggal</th> --}}
                                 <th>Nama</th>
+                                <th>Tanggal</th>
                                 <th>NISN</th>
                                 <th>Tempat</th>
                                 <th>Tanggal Lahir</th>
@@ -268,6 +293,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     {{-- <td>{{ $pd->created_at }}</td> --}}
                                     <td>{{ $pd->siswa }}</td>
+                                    <td>{{ $pd->created_at }}</td>
                                     <td>{{ $pd->nisn }}</td>
                                     <td>{{ $pd->tempat }}</td>
                                     <td>{{ $pd->tgl_lahir }}</td>

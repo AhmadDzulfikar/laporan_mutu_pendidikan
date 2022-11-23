@@ -42,6 +42,7 @@ Route::put('/siswa/edit/{id}', [PesertaDidikController::class, 'update']);
 Route::delete('siswa/delete/{id}', [PesertaDidikController::class, 'destroy']);
 
 Route::get('/pesertadidik/cetak_pdf', [PesertaDidikController::class, 'cetak_pdf']);
+Route::post('/report/periode/barang', [PesertaDidikController::class, 'cetak_periode_pdf']);
 //------------------------------Peserta Didik----------------------------------------
 
 //------------------------------Pendidik---------------------------------------
