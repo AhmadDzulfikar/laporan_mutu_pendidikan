@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EvaluasiGuru;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Support\Carbon;
 
 class EvaluasiGuruController extends Controller
 {
@@ -28,6 +28,23 @@ class EvaluasiGuruController extends Controller
 
         $pdf = PDF::loadview('pdf.evaluasi', ['data' => $data]);
         return $pdf->download('laporan-informasi-pendidik.pdf');
+    }
+
+    public function cetak_periode_pdf(Request $request)
+    {
+        $tgl1 = carbon::parse($request->tgl1)->format('Y-m-d H:i:s');
+        $tgl2 = carbon::parse($request->tgl2)->format('Y-m-d H:i:s');
+        $data = EvaluasiGuru::whereBetween('tanggal', [$tgl1, $tgl2])->get();
+        $evaluasi = EvaluasiGuru::all();
+
+        // dd($data);
+        $pdf = PDF::loadview('periode.evaluasi', [
+            'data' => $data,
+            'tgl1' => $tgl1,
+            'tgl2' => $tgl2,
+            'evaluasi' => $evaluasi,
+        ]);
+        return $pdf->download('laporan-rekap-periode-informasi_guru.pdf');
     }
 
     /**

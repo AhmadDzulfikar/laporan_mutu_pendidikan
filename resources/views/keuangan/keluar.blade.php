@@ -35,13 +35,11 @@
                                                     <button type="submit" class="btn btn-danger ">CETAK Periode</a>
                                                 </div>
                                             </div>
-
                                         </form>
-
                                     </div>
                                 </div>
-
                             </div>
+                            
                             <div class="col-6 mb-3 col-md-2">
                                 <a href="/keluar/cetak_pdf" class="btn btn-danger "><i class="bi bi-filetype-pdf"></i>
                                     Export</a>

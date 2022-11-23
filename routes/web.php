@@ -60,6 +60,7 @@ Route::put('/evaluasi/edit/{id}', [EvaluasiGuruController::class, 'update']);
 Route::delete('/evaluasi/delete/{id}', [EvaluasiGuruController::class, 'destroy']);
 
 Route::get('/evaluasi/cetak_pdf', [EvaluasiGuruController::class, 'cetak_pdf']);
+Route::post('/report/periode/informasi', [EvaluasiGuruController::class, 'cetak_periode_pdf']);
 //------------------------------Pendidik---------------------------------------
 
 //------------------------------Keuangan----------------------------------------
