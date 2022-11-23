@@ -52,7 +52,7 @@
                                     @method('POST')
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <select class="form-select" id="basicSelect" name="pesertadidik_id">
+                                            <select class="choices form-select" id="basicSelect" name="pesertadidik_id">
                                                 <option selected>Pilih Nama Peserta Didik</option>
                                                 @foreach ($siswa as $s)
                                                     <option value="{{ $s->id }}">{{ $s->siswa }}</option>

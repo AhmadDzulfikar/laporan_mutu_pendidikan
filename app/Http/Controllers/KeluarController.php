@@ -36,10 +36,6 @@ class KeluarController extends Controller
         $tgl2 = carbon::parse($request->tgl2)->format('Y-m-d H:i:s');
         $data = Keluar::whereBetween('tanggal', [$tgl1, $tgl2])->get();
         $keluar = Keluar::all();
-        // $tot_all = $data->sum('qty_m') + $data->sum('qty_k') + $data->sum('qty_r');
-        // $tot_m = $data->sum('qty_m');
-        // $tot_k = $data->sum('qty_k');
-        // $tot_r = $data->sum('qty_r');
 
         // dd($data);
         $pdf = PDF::loadview('periode.keluar', [
@@ -47,10 +43,6 @@ class KeluarController extends Controller
             'tgl1' => $tgl1,
             'tgl2' => $tgl2,
             'keluar' => $keluar,
-            // 'tot_all' => $tot_all,
-            // 'tot_m' => $tot_m,
-            // 'tot_k' => $tot_k,
-            // 'tot_r' => $tot_r,
         ]);
         return $pdf->download('laporan-rekap-periode-pengeluaran.pdf');
     }

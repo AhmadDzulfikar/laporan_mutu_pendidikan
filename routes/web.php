@@ -89,6 +89,7 @@ Route::put('/prasarana/edit/{id}', [PrasaranaController::class, 'update']);
 Route::delete('/prasarana/delete/{id}', [PrasaranaController::class, 'destroy']);
 
 Route::get('/prasarana/cetak_pdf', [PrasaranaController::class, 'cetak_pdf']);
+Route::post('/report/periode/barang', [PrasaranaController::class, 'cetak_periode_pdf']);
 //------------------------------prasarana----------------------------------------
 
 //------------------------------USER----------------------------------------
