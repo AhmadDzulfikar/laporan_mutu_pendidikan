@@ -17,6 +17,28 @@
                     <div class="row">
                         @if (!isset($data[0]->nama))
                         @else
+                            <div class="card card-info ">
+                                <div class="card-body">
+                                    <h6>Tanggal</h6>
+                                    <div class="col-6 col-md-12">
+                                        <form action="/report/periode/prestasi" method="POST">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-12 col-md-4">
+                                                    <input class="form-control" type="date" name="tgl1">
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <input class="form-control" type="date" name="tgl2">
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <button type="submit" class="btn btn-danger ">CETAK Periode</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-6 mb-3 col-md-2">
                                 <a href="/prestasi/cetak_pdf" class="btn btn-danger "><i class="bi bi-filetype-pdf"></i>
                                     Export</a>
@@ -60,7 +82,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <select class="form-select" id="basicSelect" name="evaluasi_guru_id">
+                                            <select class="choices form-select" id="basicSelect" name="evaluasi_guru_id">
                                                 <option value="0">Pilih Nama Guru</option>
                                                 @foreach ($nama as $n)
                                                     <option value="{{ $n->id }}">{{ $n->nama }}</option>

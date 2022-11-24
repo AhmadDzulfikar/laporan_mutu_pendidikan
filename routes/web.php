@@ -53,6 +53,7 @@ Route::put('/prestasi/edit/{id}', [PrestasiGuruController::class, 'update']);
 Route::delete('prestasi/delete/{id}', [PrestasiGuruController::class, 'destroy']);
 
 Route::get('/prestasi/cetak_pdf', [PrestasiGuruController::class, 'cetak_pdf']);
+Route::post('/report/periode/prestasi', [PrestasiGuruController::class, 'cetak_periode_pdf']);
 //Informasi Guru
 Route::get('/evaluasiguru', [EvaluasiGuruController::class, 'index']);
 Route::post('/store-evaluasi', [EvaluasiGuruController::class, 'store']);
@@ -80,6 +81,7 @@ Route::put('/masuk/edit/{id}', [MasukController::class, 'update']);
 Route::delete('/masuk/delete/{id}', [MasukController::class, 'destroy']);
 
 Route::get('/masuk/cetak_pdf', [MasukController::class, 'cetak_pdf']);
+Route::post('/report/periode/masuk', [MasukController::class, 'cetak_periode_pdf']);
 //------------------------------Keuangan----------------------------------------
 
 //------------------------------prasarana----------------------------------------

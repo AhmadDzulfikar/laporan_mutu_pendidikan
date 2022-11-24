@@ -7,6 +7,7 @@ use App\Models\Keluar;
 use App\Models\Masuk;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 
 class MasukController extends Controller
 {
@@ -17,9 +18,28 @@ class MasukController extends Controller
      */
     public function index()
     {
-        $masuk = Masuk::get();
+        $masuk = Masuk::all();
         $siswa = PesertaDidik::all();
         return view('keuangan.masuk', compact('masuk', 'siswa'));
+    }
+
+    public function cetak_periode_pdf(Request $request)
+    {
+        $tgl1 = carbon::parse($request->tgl1)->format('Y-m-d H:i:s');
+        $tgl2 = carbon::parse($request->tgl2)->format('Y-m-d H:i:s');
+        $masuk = Masuk::whereBetween('tanggal', [$tgl1, $tgl2])->get();
+        $siswa = PesertaDidik::all();
+        $pemasukkan = Masuk::all();
+
+        // dd($data);
+        $pdf = PDF::loadview('periode.pemasukkan', [
+            'masuk' => $masuk,
+            'tgl1' => $tgl1,
+            'tgl2' => $tgl2,
+            'pemasukkan' => $pemasukkan,
+            'siswa' => $siswa,
+        ]);
+        return $pdf->download('laporan-rekap-periode-pemasukkan.pdf');
     }
 
     public function cetak_pdf()

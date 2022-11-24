@@ -6,6 +6,7 @@ use App\Models\EvaluasiGuru;
 use App\Models\PrestasiGuru;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 
 class PrestasiGuruController extends Controller
 {
@@ -18,7 +19,26 @@ class PrestasiGuruController extends Controller
     {
         $data = PrestasiGuru::all();
         $nama = EvaluasiGuru::all();
-        return view('data.prestasiguru',compact('data','nama'));
+        return view('data.prestasiguru', compact('data', 'nama'));
+    }
+
+    public function cetak_periode_pdf(Request $request)
+    {
+        $tgl1 = carbon::parse($request->tgl1)->format('Y-m-d H:i:s');
+        $tgl2 = carbon::parse($request->tgl2)->format('Y-m-d H:i:s');
+        $data = PrestasiGuru::whereBetween('tanggal', [$tgl1, $tgl2])->get();
+        $nama = EvaluasiGuru::all();
+        $prestasi = PrestasiGuru::all();
+
+        // dd($data);
+        $pdf = PDF::loadview('periode.prestasiguru', [
+            'data' => $data,
+            'tgl1' => $tgl1,
+            'tgl2' => $tgl2,
+            'prestasi' => $prestasi,
+            'nama' => $nama,
+        ]);
+        return $pdf->download('laporan-rekap-periode-prestasiguru.pdf');
     }
 
     public function cetak_pdf()
@@ -47,32 +67,31 @@ class PrestasiGuruController extends Controller
      */
     public function store(Request $request)
     {
-        
-        if($request->tanggal !== null && $request->evaluasi_guru_id !== null){
+
+        if ($request->tanggal !== null && $request->evaluasi_guru_id !== null) {
 
             $data = new PrestasiGuru();
-    
+
             $data->tanggal = $request->tanggal;
 
-            if($request->evaluasi_guru_id === '0'){
+            if ($request->evaluasi_guru_id === '0') {
                 toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
                 return redirect()->back();
-            }else{
+            } else {
                 $data->evaluasi_guru_id = $request->evaluasi_guru_id;
             }
 
-            if($request->keterangan === null){
+            if ($request->keterangan === null) {
                 $data->keterangan = '-';
-            }else{
+            } else {
                 $data->keterangan = $request->keterangan;
             }
             // dd($data);
-                $data->save();
-                toast()->success('Berhasil', 'Berhasil Menambah Prestasi Pendidik')->position('top');
-                return redirect()->back();
-            }
-                return redirect()->back();
-
+            $data->save();
+            toast()->success('Berhasil', 'Berhasil Menambah Prestasi Pendidik')->position('top');
+            return redirect()->back();
+        }
+        return redirect()->back();
     }
 
     /**
@@ -106,25 +125,25 @@ class PrestasiGuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->tanggal !== null && $request->evaluasi_guru_id !== null && $request->keterangan !== null){
+        if ($request->tanggal !== null && $request->evaluasi_guru_id !== null && $request->keterangan !== null) {
 
-        $data = PrestasiGuru::where('id', $id)->firstOrFail();
+            $data = PrestasiGuru::where('id', $id)->firstOrFail();
 
-        // dd($request->all());
+            // dd($request->all());
 
-        $data = PrestasiGuru::find($id)->update([
-            'evaluasi_guru_id' => $request->evaluasi_guru_id,
-            'tanggal' => $request->tanggal,
-            'keterangan' => $request->keterangan
-        ]);
+            $data = PrestasiGuru::find($id)->update([
+                'evaluasi_guru_id' => $request->evaluasi_guru_id,
+                'tanggal' => $request->tanggal,
+                'keterangan' => $request->keterangan
+            ]);
 
-        toast()->success('Berhasil', 'Berhasil Mengedit Prestasi Pendidik')->position('top');
+            toast()->success('Berhasil', 'Berhasil Mengedit Prestasi Pendidik')->position('top');
 
-        return redirect()->back();
-        }else{
+            return redirect()->back();
+        } else {
             toast()->error('Gagal', 'Gagal Mengedit Prestasi Pendidik')->position('top');
 
-        return redirect()->back();
+            return redirect()->back();
         }
     }
 
@@ -138,8 +157,8 @@ class PrestasiGuruController extends Controller
     {
         $data = PrestasiGuru::find($id);
         $data->delete();
-        toast()->success('Berhasil','Berhasil Menghapus Data Prestasi Guru')->position('top');
-        
+        toast()->success('Berhasil', 'Berhasil Menghapus Data Prestasi Guru')->position('top');
+
         return redirect()->back();
     }
 }

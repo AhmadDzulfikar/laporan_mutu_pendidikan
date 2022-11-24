@@ -20,6 +20,7 @@
                             @else
                                 <div class="card card-info ">
                                     <div class="card-body">
+                                        <h6>Tanggal</h6>
                                         <div class="col-6 col-md-12">
                                             <form action="/report/periode/pesertadidik" method="POST">
                                                 @csrf
@@ -279,8 +280,8 @@
                                 <th>Tanggal Lahir</th>
                                 <th>No Telp</th>
                                 <th>OrangTua</th>
-                                <th>Tahun</th>
-                                <th>Tanggal Lulus</th>
+                                <th>Tgl Masuk</th>
+                                <th>Tgl Lulus</th>
 
                                 @hasrole('admin')
                                     <th>Status</th>
