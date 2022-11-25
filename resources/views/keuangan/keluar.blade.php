@@ -46,11 +46,11 @@
                                     Export</a>
                             </div>
 
-                            <div class="col-6 col-md-2">
+                            {{-- <div class="col-6 col-md-2">
                                 <a href="/excel/barang" class="btn btn-success" target="_blank"><i
                                         class="bi bi-file-excel"></i>
                                     Export</a>
-                            </div>
+                            </div> --}}
 
                             <hr class="divider">
                         @endif

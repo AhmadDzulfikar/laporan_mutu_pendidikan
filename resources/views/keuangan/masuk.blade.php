@@ -43,11 +43,11 @@
                                     Export</a>
                             </div>
 
-                            <div class="col-6 col-md-2">
+                            {{-- <div class="col-6 col-md-2">
                                 <a href="/excel/barang" class="btn btn-success" target="_blank"><i
                                         class="bi bi-file-excel"></i>
                                     Export</a>
-                            </div>
+                            </div> --}}
 
                             <hr class="divider">
                         @endif
@@ -266,15 +266,14 @@
                                     @hasrole('admin')
                                         <td>
                                             <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#edit-masuk{{ $d->id }}"> <i
+                                                data-bs-target="#edit-masuk{{ $d->id }}"><i
                                                     class="badge-circle badge-circle-ligh font-medium-1"
                                                     data-feather="edit"></i> </a>
 
                                             <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#delete-masuk{{ $item->id }}"> <i
                                                     class="badge-circle badge-circle-ligh font-medium-1"
-                                                    data-feather="trash"></i> </a>
-
+                                                    data-feather="trash"></i></a>
                                         </td>
                                     @endhasrole
                                 </tr>

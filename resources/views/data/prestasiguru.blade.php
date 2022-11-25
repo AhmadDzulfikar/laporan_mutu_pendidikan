@@ -44,11 +44,11 @@
                                     Export</a>
                             </div>
 
-                            <div class="col-6 col-md-2">
+                            {{-- <div class="col-6 col-md-2">
                                 <a href="/excel/barang" class="btn btn-success" target="_blank"><i
                                         class="bi bi-file-excel"></i>
                                     Export</a>
-                            </div>
+                            </div> --}}
 
                             <hr class="divider">
                         @endif
@@ -89,9 +89,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
-
-
+                                        
                                         <div class="form-group mb-3">
                                             <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="keterangan"></textarea>

@@ -6,6 +6,8 @@ use App\Models\Prasarana;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
+
 
 class PrasaranaController extends Controller
 {
@@ -65,19 +67,26 @@ class PrasaranaController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = $request->except(['_token']);
-        // Prasarana::create($data);
-        // // dd($data);
-        // return redirect('/store-prasarana');
-
+        $validator = Validator::make($request->all(), [
+            'uraian' => 'required',
+            'jumlah' => 'required',
+            'tanggal' => 'required',
+            'kondisi' => 'required',
+        ]);
+        if ($validator->fails()) {
+            toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
+            return redirect()->back();
+        } else {
+            toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
+        }
         $data = new Prasarana();
+
         $data->uraian = $request->uraian;
         $data->jumlah = $request->jumlah;
         $data->tanggal = $request->tanggal;
         $data->kondisi = $request->kondisi;
 
         $data->save();
-        toast()->success('Berhasil', 'Berhasil Menambah Sarana Prasarana')->position('top');
 
         return redirect()->back();
     }
@@ -116,22 +125,26 @@ class PrasaranaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Prasarana::where('id', $id)->firstOrFail();
-
         // dd($request->all());
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'uraian' => 'required',
             'jumlah' => 'required',
             'tanggal' => 'required',
             'kondisi' => 'required'
         ]);
+        if ($validator->fails()) {
+            toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
+            return redirect()->back();
+        } else {
+            toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
+        }
+        $data = Prasarana::where('id', $id)->firstOrFail();
 
         $data->uraian = $request->uraian;
         $data->jumlah = $request->jumlah;
         $data->tanggal = $request->tanggal;
         $data->kondisi = $request->kondisi;
         $data->update();
-        toast()->success('Berhasil', 'Berhasil Mengedit Sarana Prasarana')->position('top');
 
         return redirect()->back();
     }

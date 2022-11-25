@@ -6,6 +6,7 @@ use App\Models\Keluar;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class KeluarController extends Controller
 {
@@ -65,25 +66,26 @@ class KeluarController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->tanggal !== null && $request->uraian !== null  && $request->keluar !== null) {
-
-            $data = new Keluar();
-
-            $data->tanggal = $request->tanggal;
-            $result = preg_replace("/[^0-9]/", "", $request->keluar);
-            $data->keluar = $result;
-
-            if ($request->uraian === 'null') {
-                toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
-                return redirect()->back();
-            } else {
-                $data->uraian = $request->uraian;
-            }
-            $data->save();
-            toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
-
+        $validator = Validator::make($request->all(), [
+            'uraian' => 'required',
+            'tanggal' => 'required',
+            'keluar' => 'required',
+        ]);
+        if ($validator->fails()) {
+            toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
             return redirect()->back();
+        } else {
+            toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
         }
+        $data = new Keluar();
+
+        $data->tanggal = $request->tanggal;
+        $result = preg_replace("/[^0-9]/", "", $request->keluar);
+        $data->keluar = $result;
+        $data->uraian = $request->uraian;
+
+        $data->save();
+
         return redirect()->back();
     }
 
@@ -118,21 +120,28 @@ class KeluarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Keluar::where('id', $id)->firstOrFail();
 
         // dd($request->all());
-        $this->validate($request, [
+
+        $validator = Validator::make($request->all(), [
             'uraian' => 'required',
             'tanggal' => 'required',
             'keluar' => 'required',
         ]);
+        if ($validator->fails()) {
+            toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
+            return redirect()->back();
+        } else {
+            toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
+        }
+        $data = Keluar::where('id', $id)->firstOrFail();
+
 
         $result = preg_replace("/[^0-9]/", "", $request->keluar);
         $data->uraian = $request->uraian;
         $data->tanggal = $request->tanggal;
         $data->keluar = $result;
         $data->update();
-        toast()->question('Berhasil', 'Berhasil Mengedit Pengeluaran')->position('top');
 
         return redirect()->back();
     }
