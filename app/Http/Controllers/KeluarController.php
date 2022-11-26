@@ -120,9 +120,7 @@ class KeluarController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         // dd($request->all());
-
         $validator = Validator::make($request->all(), [
             'uraian' => 'required',
             'tanggal' => 'required',
@@ -135,7 +133,6 @@ class KeluarController extends Controller
             toast()->success('Berhasil', 'Berhasil Menambah Pengeluaran')->position('top');
         }
         $data = Keluar::where('id', $id)->firstOrFail();
-
 
         $result = preg_replace("/[^0-9]/", "", $request->keluar);
         $data->uraian = $request->uraian;
