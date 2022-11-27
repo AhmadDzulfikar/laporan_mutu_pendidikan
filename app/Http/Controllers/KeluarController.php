@@ -143,12 +143,6 @@ class KeluarController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Keluar  $keluar
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $data = Keluar::find($id);

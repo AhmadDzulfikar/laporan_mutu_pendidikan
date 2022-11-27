@@ -20,7 +20,7 @@ class CreateEvaluasiGurusTable extends Migration
             $table->text('s1')->nullable();
             $table->text('s2')->nullable();
             $table->text('s3')->nullable();
-            $table->longText('penghargaan');
+            $table->longText('penghargaan')->nullable();
             $table->timestamps();
         });
     }
