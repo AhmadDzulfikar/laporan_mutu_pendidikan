@@ -18,10 +18,10 @@ class CreateMasuksTable extends Migration
             $table->unsignedBigInteger('pesertadidik_id');
             $table->foreign('pesertadidik_id')->references('id')->on('pesertadidik');
             $table->date('tanggal');
-            $table->integer('uangpangkal');
-            $table->integer('spp');
-            $table->integer('uangkegiatan');
-            $table->integer('uangperlengkapan');
+            $table->integer('uangpangkal')->nullable();
+            $table->integer('spp')->nullable();
+            $table->integer('uangkegiatan')->nullable();
+            $table->integer('uangperlengkapan')->nullable();
             $table->timestamps();
         });
     }

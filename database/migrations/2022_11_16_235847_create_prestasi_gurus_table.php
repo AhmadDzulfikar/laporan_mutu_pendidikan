@@ -18,7 +18,7 @@ class CreatePrestasiGurusTable extends Migration
             $table->date('tanggal');
             $table->unsignedBigInteger('evaluasi_guru_id');
             $table->foreign('evaluasi_guru_id')->references('id')->on('evaluasi_gurus');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }
