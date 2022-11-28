@@ -7,11 +7,14 @@ use App\Models\PrestasiGuru;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Validator;
-
 
 class PrestasiGuruController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $data = PrestasiGuru::all();
@@ -19,7 +22,6 @@ class PrestasiGuruController extends Controller
         return view('data.prestasiguru', compact('data', 'nama'));
     }
 
-    // PDF
     public function cetak_periode_pdf(Request $request)
     {
         $tgl1 = carbon::parse($request->tgl1)->format('Y-m-d H:i:s');
@@ -46,10 +48,10 @@ class PrestasiGuruController extends Controller
         $pdf = PDF::loadview('pdf.prestasiguru', ['data' => $data]);
         return $pdf->download('laporan-prestasi-guru.pdf');
     }
-    // TUTUP PDF
 
     public function store(Request $request)
     {
+
         if ($request->tanggal !== null && $request->evaluasi_guru_id !== null) {
 
             $data = new PrestasiGuru();
@@ -74,34 +76,6 @@ class PrestasiGuruController extends Controller
             return redirect()->back();
         }
         return redirect()->back();
-
-        // $validator = Validator::make($request->all(), [
-        //     'evaluasi_guru_id' => 'required',
-        //     'tanggal' => 'required',
-        //     'keterangan',
-        // ]);
-        // if ($validator->fails()) {
-        //     toast()->error('Gagal', 'Gagal Menambah Prestasi Pendidik')->position('top');
-        //     return redirect()->back();
-        // } else {
-        //     toast()->success('Berhasil', 'Berhasil Menambah Prestasi Pendidik')->position('top');
-        // }
-
-        // $data = new PrestasiGuru();
-        // $nama = new EvaluasiGuru();
-
-        // if ($request->keterangan === null) {
-        //     $data->keterangan = '-';
-        // } else {
-        //     $data->keterangan = $request->keterangan;
-        // }
-
-        // $data->evaluasi_guru_id = $request->evaluasi_guru_id;
-        // $data->tanggal = $request->tanggal;
-
-        // $data->save();
-
-        // return redirect()->back();
     }
 
     /**

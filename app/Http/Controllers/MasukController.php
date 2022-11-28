@@ -49,30 +49,6 @@ class MasukController extends Controller
 
     public function store(Request $request)
     {
-        // if ($request->tanggal !== null && $request->pesertadidik_id !== null) {
-        //     $data = new Masuk();
-
-        //     $result = preg_replace("/[^0-9]/", "", $request->masuk);
-
-        //     $data->tanggal = $request->tanggal;
-        //     $data->uangpangkal = preg_replace("/[^0-9]/", "", $request->uangpangkal);
-        //     $data->spp = preg_replace("/[^0-9]/", "", $request->spp);
-        //     $data->uangkegiatan = preg_replace("/[^0-9]/", "", $request->uangkegiatan);
-        //     $data->uangperlengkapan = preg_replace("/[^0-9]/", "", $request->uangperlengkapan);
-
-        //     if ($request->pesertadidik_id === '0') {
-        //         toast()->error('Gagal', 'Gagal Menambah Pemasukkan')->position('top');
-        //         return redirect()->back();
-        //     } else {
-        //         $data->pesertadidik_id = $request->pesertadidik_id;
-        //     }
-        //     $data->save();
-        //     toast()->success('Berhasil', 'Berhasil Menambah Pemasukkan')->position('top');
-        //     return redirect()->back();
-        // }
-        // // dd($data->uangperlengkapan);
-        // return redirect()->back();
-
         $validator = Validator::make($request->all(), [
             'pesertadidik_id' => 'required',
             'tanggal' => 'required',
@@ -130,12 +106,6 @@ class MasukController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Masuk  $masuk
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $masuk = Masuk::find($id);
