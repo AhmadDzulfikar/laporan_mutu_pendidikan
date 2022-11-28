@@ -6,6 +6,7 @@ use App\Models\Guru;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class GuruController extends Controller
 {
@@ -38,12 +39,19 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             "gambar",
             "name" => 'required',
             "email" => 'required',
             "password" => 'required|min:8'
         ]);
+        if ($validator->fails()) {
+            toast()->error('Gagal', 'Gagal Menambah Guru')->position('top');
+            return redirect()->back();
+        } else {
+            toast()->success('Berhasil', 'Berhasil Menambah Guru')->position('top');
+        }
+
         $data = new User();
         $data->gambar = $request->gambar;
         $data->name = $request->name;
@@ -61,51 +69,10 @@ class GuruController extends Controller
         }
 
         $data->save();
-        toast()->success('Berhasil','Berhasil Menambah Guru')->position('top');
 
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Guru $guru)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Guru $guru)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Guru $guru)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $data = User::find($id);
