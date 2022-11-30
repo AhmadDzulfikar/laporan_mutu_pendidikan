@@ -15,7 +15,7 @@
         }
     </style>
     <center>
-        <h1>Yayasan Tarbiatul Wildan Serpong</h1>
+        <h1>YAYASAN TARBIATUL WILDAN SERPONG</h1>
         <h1>MI Modern Al-Misbah</h1>
         <h5>Serpong, Kec. Serpong, Kota Tangerang Selatan, Banten 15310</h5>
         <h5>Jl. Raya Puspiptek No.135</h5>
