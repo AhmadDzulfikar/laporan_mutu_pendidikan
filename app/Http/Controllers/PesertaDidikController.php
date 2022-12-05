@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Masuk;
 use App\Models\PesertaDidik;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -18,6 +19,10 @@ class PesertaDidikController extends Controller
     public function index()
     {
         $data = PesertaDidik::all();
+        foreach ($data as $datas) {
+            $datas->masuk = Masuk::where('pesertadidik_id', $datas->id)->first();
+        }
+
         return view('data.pesertadidik')->with([
             'data' => $data
         ]);
@@ -48,22 +53,6 @@ class PesertaDidikController extends Controller
         return $pdf->download('laporan-rekap-periode-pesertadidik.pdf');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -74,7 +63,7 @@ class PesertaDidikController extends Controller
             'no_tlp' => 'required',
             'org_tua' => 'required',
             'tgl_msk' => 'required',
-            'tgl_lulus' => 'required'
+            'tgl_lulus',
         ]);
         if ($validator->fails()) {
             toast()->error('Gagal', 'Gagal Menambah Peserta Didik')->position('top');
@@ -84,6 +73,12 @@ class PesertaDidikController extends Controller
         }
         $data = new PesertaDidik();
 
+        if ($request->tgl_lulus === null) {
+            $data->tgl_lulus = null ;
+        } else {
+            $data->tgl_lulus = $request->tgl_lulus;
+        }
+
         $data->siswa = $request->siswa;
         $data->nisn = $request->nisn;
         $data->tempat = $request->tempat;
@@ -91,42 +86,12 @@ class PesertaDidikController extends Controller
         $data->no_tlp = $request->no_tlp;
         $data->org_tua = $request->org_tua;
         $data->tgl_msk = $request->tgl_msk;
-        $data->tgl_lulus = $request->tgl_lulus;
 
         $data->save();
 
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [

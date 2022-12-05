@@ -309,7 +309,7 @@
                                                     class="badge-circle badge-circle-ligh font-medium-1"
                                                     data-feather="edit"></i></a>
 
-                                            <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                            <a class="btn shadow btn-outline-danger btn-sm {{ $pd->masuk ? 'disabled' : '' }}" data-bs-toggle="modal"
                                                 data-bs-target="#delete-prasarana{{ $pd->id }}"><i
                                                     class="badge-circle badge-circle-ligh font-medium-1"
                                                     data-feather="trash"></i></a>
