@@ -124,14 +124,14 @@
                                         @method('put')
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput2" class="form-label">Tanggal
+                                                <label for="formGroupExampleInput2" class="form-label">Tanggal *
                                                 </label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Nama Guru</label>
+                                                <label for="formGroupExampleInput" class="form-label">Nama Guru *</label>
                                                 <select class="choices form-select" id="basicSelect"
                                                     name="evaluasi_guru_id" value="{{ $d->evaluasi_guru_id }}">
                                                     @foreach ($nama as $n)
