@@ -75,13 +75,13 @@
                                     @method('POST')
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Nama Guru</label>
+                                            <label for="formGroupExampleInput" class="form-label">Nama Guru *</label>
                                             <input type="text" class="form-control" id="formGroupExampleInput"
                                                 placeholder="Masukkan Nama Guru" name="nama">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Tanggal</label>
+                                            <label for="formGroupExampleInput" class="form-label">Tanggal *</label>
                                             <input type="date" class="form-control" id="formGroupExampleInput"
                                                 placeholder="Tanggal" name="tanggal">
                                         </div>
