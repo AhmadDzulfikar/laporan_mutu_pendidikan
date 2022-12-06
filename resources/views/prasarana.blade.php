@@ -77,19 +77,19 @@
                                     @method('POST')
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Uraian</label>
+                                            <label for="formGroupExampleInput" class="form-label">Uraian *</label>
                                             <input type="text" name="uraian" class="form-control"
                                                 id="formGroupExampleInput" placeholder="Masukkan Uraian">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Jumlah</label>
+                                            <label for="formGroupExampleInput" class="form-label">Jumlah *</label>
                                             <input type="number" name="jumlah" class="form-control"
                                                 id="formGroupExampleInput" placeholder="Masukkan Jumlah">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput2" class="form-label">Tanggal Pembelian</label>
+                                            <label for="formGroupExampleInput2" class="form-label">Tanggal Pembelian *</label>
                                             <input type="date" class="form-control" id="formGroupExampleInput2"
                                                 placeholder="tanggal" name="tanggal">
                                         </div>
@@ -101,7 +101,7 @@
                                             </div> --}}
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Kondisi</label>
+                                            <label for="formGroupExampleInput" class="form-label">Kondisi *</label>
                                             <select class="form-select" aria-label="Default select example" name="kondisi">
                                                 <option value="baik">Baik</option>
                                                 <option value="rusak">Rusak</option>
@@ -141,7 +141,7 @@
                                         @method('put')
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Uraian</label>
+                                                <label for="formGroupExampleInput" class="form-label">Uraian *</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Example input placeholder" name="uraian"
                                                     value="{{ $d->uraian }}">
@@ -156,13 +156,13 @@
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Tanggal
-                                                    Pembelian</label>
+                                                    Pembelian *</label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Kondisi</label>
+                                                <label for="formGroupExampleInput" class="form-label">Kondisi *</label>
                                                 <select class="form-select" aria-label="Default select example"
                                                     name="kondisi" value="{{ $d->kondisi }}">
                                                     <option value="baik">Baik</option>

@@ -74,7 +74,7 @@
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <select class="choices form-select" id="basicSelect" name="pesertadidik_id">
-                                                <option value="0">Pilih Nama Peserta Didik</option>
+                                                <option value="0">Pilih Nama Peserta Didik *</option>
                                                 @foreach ($siswa as $s)
                                                     <option value="{{ $s->id }}">{{ $s->siswa }}</option>
                                                 @endforeach
@@ -82,7 +82,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Tanggal</label>
+                                            <label for="formGroupExampleInput" class="form-label">Tanggal *</label>
                                             <input type="date" class="form-control" id="formGroupExampleInput"
                                                 placeholder="Nama Siswa" name="tanggal">
                                         </div>
@@ -156,7 +156,7 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput2" class="form-label">tanggal</label>
+                                                <label for="formGroupExampleInput2" class="form-label">tanggal *</label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
                                             </div>

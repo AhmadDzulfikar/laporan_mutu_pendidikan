@@ -78,19 +78,19 @@
                                     @method('POST')
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Uraian</label>
+                                            <label for="formGroupExampleInput" class="form-label">Uraian *</label>
                                             <input type="text" name="uraian" class="form-control"
                                                 id="formGroupExampleInput" placeholder="Masukkan Uraian">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput2" class="form-label">Tanggal Pembelian</label>
+                                            <label for="formGroupExampleInput2" class="form-label">Tanggal Pembelian *</label>
                                             <input type="date" class="form-control" id="formGroupExampleInput2"
                                                 placeholder="tanggal" name="tanggal">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Pengeluaran</label>
+                                            <label for="formGroupExampleInput" class="form-label">Pengeluaran *</label>
                                             <input type="text" name="keluar" class="form-control"
                                                 id="formGroupExampleInput" placeholder="Masukkan Jumlah"
                                                 onkeyup="formatbaru(event)">
@@ -124,7 +124,7 @@
                                         @method('put')
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Uraian</label>
+                                                <label for="formGroupExampleInput" class="form-label">Uraian *</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Example input placeholder" name="uraian"
                                                     value="{{ $d->uraian }}">
@@ -132,13 +132,13 @@
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Tanggal
-                                                    Pembelian</label>
+                                                    Pembelian *</label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Pengeluaran</label>
+                                                <label for="formGroupExampleInput" class="form-label">Pengeluaran *</label>
                                                 <input type="text" min="1" name="keluar" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan Jumlah"
                                                     onkeyup="formatbaru(event)" autocomplete="off"

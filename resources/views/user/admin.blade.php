@@ -12,17 +12,17 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Nama Admin</label>
+                            <label for="formGroupExampleInput" class="form-label">Nama Admin *</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nama Admin"
                                 name="name">
                         </div>
                         <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Email</label>
+                            <label for="formGroupExampleInput" class="form-label">Email *</label>
                             <input type="email" class="form-control" id="formGroupExampleInput" placeholder="Email"
                                 name="email" autocomplete="off">
                         </div>
                         <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Password</label>
+                            <label for="formGroupExampleInput" class="form-label">Password *</label>
                             <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Password"
                                 name="password" autocomplete="off">
                         </div>
