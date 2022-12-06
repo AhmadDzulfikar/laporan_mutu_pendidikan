@@ -76,14 +76,14 @@
                                     @method('POST')
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Tanggal</label>
+                                            <label for="formGroupExampleInput" class="form-label">Tanggal *</label>
                                             <input type="date" class="form-control" id="formGroupExampleInput"
                                                 placeholder="Tanggal" name="tanggal">
                                         </div>
 
                                         <div class="mb-3">
                                             <select class="choices form-select" id="basicSelect" name="evaluasi_guru_id">
-                                                <option value="0">Pilih Nama Guru</option>
+                                                <option value="0">Pilih Nama Guru *</option>
                                                 @foreach ($nama as $n)
                                                     <option value="{{ $n->id }}">{{ $n->nama }}</option>
                                                 @endforeach
