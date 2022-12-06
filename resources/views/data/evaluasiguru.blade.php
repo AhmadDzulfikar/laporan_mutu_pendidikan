@@ -138,14 +138,14 @@
                                         @method('put')
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Nama Guru</label>
+                                                <label for="formGroupExampleInput" class="form-label">Nama Guru *</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Masukkan Nama Guru" name="nama"
                                                     value="{{ $d->nama }}">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput2" class="form-label">Tanggal
+                                                <label for="formGroupExampleInput2" class="form-label">Tanggal *
                                                 </label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="tanggal" name="tanggal" value="{{ $d->tanggal }}">
@@ -168,13 +168,6 @@
                                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                                     placeholder="Masukkan S3" name="s3" value="{{ $d->s3 }}">
                                             </div>
-
-                                            {{-- <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Penghargaan</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput"
-                                                    placeholder="Masukkan Penghargaan" name="penghargaan"
-                                                    value="{{ $d->penghargaan }}">
-                                            </div> --}}
 
                                             <div class="form-group mb-3">
                                                 <label for="exampleFormControlTextarea1"
