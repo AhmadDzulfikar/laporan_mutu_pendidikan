@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EvaluasiGuru;
+use App\Models\PrestasiGuru;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Carbon;
@@ -14,6 +15,10 @@ class EvaluasiGuruController extends Controller
     public function index()
     {
         $data = EvaluasiGuru::all();
+        foreach ($data as $datas) {
+            $datas->prestasi = PrestasiGuru::where('evaluasi_guru_id', $datas->id)->first();
+        }
+
         return view('data.evaluasiguru')->with([
             'data' => $data
         ]);
