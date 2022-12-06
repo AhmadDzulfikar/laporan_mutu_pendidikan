@@ -77,45 +77,45 @@
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">Nama Peserta
-                                                    Didik</label>
+                                                    Didik *</label>
                                                 <input type="text" name="siswa" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan Nama Peserta Didik">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">NISN</label>
+                                                <label for="formGroupExampleInput" class="form-label">NISN *</label>
                                                 <input type="number" name="nisn" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan No NISN">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">Tempat Lahir</label>
+                                                <label for="formGroupExampleInput" class="form-label">Tempat Lahir *</label>
                                                 <input type="text" name="tempat" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan Tempat Lahir">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput2" class="form-label">Tanggal Lahir</label>
+                                                <label for="formGroupExampleInput2" class="form-label">Tanggal Lahir *</label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="tanggal" name="tgl_lahir">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput" class="form-label">No Telp</label>
+                                                <label for="formGroupExampleInput" class="form-label">No Telp *</label>
                                                 <input type="number" name="no_tlp" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan Nomor Telpon">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput" class="form-label">Nama Orang
-                                                    Tua</label>
+                                                    Tua *</label>
                                                 <input type="text" name="org_tua" class="form-control"
                                                     id="formGroupExampleInput" placeholder="Masukkan Nama Orang Tua">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Tanggal
-                                                    Masuk</label>
+                                                    Masuk *</label>
                                                 <input type="date" class="form-control" id="formGroupExampleInput2"
                                                     placeholder="Masukkan Tanggal Masuk Peserta Didik" name="tgl_msk">
                                             </div>
