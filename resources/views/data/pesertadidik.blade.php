@@ -157,14 +157,14 @@
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="formGroupExampleInput" class="form-label">Nama Peserta
-                                                        Didik</label>
+                                                        Didik *</label>
                                                     <input type="text" class="form-control" id="formGroupExampleInput"
                                                         placeholder="Example input placeholder" name="siswa"
                                                         value="{{ $d->siswa }}">
                                                 </div>
 
                                                 <div class="mb-3">
-                                                    <label for="formGroupExampleInput" class="form-label">NISN</label>
+                                                    <label for="formGroupExampleInput" class="form-label">NISN *</label>
                                                     <input type="number" min="1" name="nisn"
                                                         class="form-control" id="formGroupExampleInput"
                                                         placeholder="Masukkan Jumlah" autocomplete="off"
@@ -173,7 +173,7 @@
 
                                                 <div class="mb-3">
                                                     <label for="formGroupExampleInput" class="form-label">Tempat
-                                                        Lahir</label>
+                                                        Lahir *</label>
                                                     <input type="text" class="form-control" id="formGroupExampleInput"
                                                         placeholder="Example input placeholder" name="tempat"
                                                         value="{{ $d->tempat }}">
@@ -181,14 +181,14 @@
 
                                                 <div class="mb-3">
                                                     <label for="formGroupExampleInput2" class="form-label">Tanggal
-                                                        Lahir</label>
+                                                        Lahir *</label>
                                                     <input type="date" class="form-control"
                                                         id="formGroupExampleInput2" placeholder="tanggal"
                                                         name="tgl_lahir" value="{{ $d->tgl_lahir }}">
                                                 </div>
 
                                                 <div class="mb-3">
-                                                    <label for="formGroupExampleInput" class="form-label">No Telp</label>
+                                                    <label for="formGroupExampleInput" class="form-label">No Telp *</label>
                                                     <input type="number" class="form-control" id="formGroupExampleInput"
                                                         placeholder="Example input placeholder" name="no_tlp"
                                                         value="{{ $d->no_tlp }}">
@@ -196,7 +196,7 @@
 
                                                 <div class="mb-3">
                                                     <label for="formGroupExampleInput" class="form-label">Nama Orang
-                                                        Tua</label>
+                                                        Tua *</label>
                                                     <input type="text" class="form-control" id="formGroupExampleInput"
                                                         placeholder="Example input placeholder" name="org_tua"
                                                         value="{{ $d->org_tua }}" value="">
@@ -204,7 +204,7 @@
 
                                                 <div class="mb-3">
                                                     <label for="formGroupExampleInput" class="form-label">Tanggal
-                                                        Masuk</label>
+                                                        Masuk *</label>
                                                     <input type="date" class="form-control" id="formGroupExampleInput"
                                                         placeholder="Example input placeholder" name="tgl_msk"
                                                         value="{{ $d->tgl_msk }}">
@@ -216,15 +216,6 @@
                                                     <input type="text" class="form-control" id="formGroupExampleInput"
                                                         placeholder="Example input placeholder" name="tgl_lulus"
                                                         value="{{ $d->tgl_lulus }}">
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="formGroupExampleInput" class="form-label">Kondisi</label>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        name="kondisi" value="{{ $d->kondisi }}">
-                                                        <option value="baik">Baik</option>
-                                                        <option value="rusak">Rusak</option>
-                                                    </select>
                                                 </div>
 
                                             </div>
