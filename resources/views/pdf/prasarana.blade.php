@@ -16,7 +16,7 @@
     </style>
     <center>
         <h3>YAYASAN TARBIATUL WILDAN SERPONG</h3>
-        <h3>MI Modern Al-Misbah</h3>
+        <h4>MI Modern Al-Misbah</h4>
         <h5>Serpong, Kec. Serpong, Kota Tangerang Selatan, Banten 15310</h5>
         <h5>Jl. Raya Puspiptek No.135</h5>
         <h5>(021) 75872434 </h5>
