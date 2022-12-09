@@ -27,7 +27,6 @@
     <table class='table table-bordered'>
 
         <h5>Data Sarana Prasarana</h5>
-
         <thead>
             <tr>
                 <th>No</th>
