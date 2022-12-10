@@ -107,7 +107,7 @@
                             </h5>
                         </div>
 
-                        {{-- MASUKKAN EMAIL --}}
+                        {{-- MASUKKAN dEMAIL --}}
                         <div class="form-group position-relative has-icon-left mb-0">
                             <input asp-for="email" type="email" name="email"
                                 class="form-control form-control-xl @error('email') is-invalid @enderror"
